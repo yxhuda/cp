@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	<body>
+		<div class="hui-header" id='header' >
+			<h1 id='title'>首页</h1>
+			<div class="bank-right" id="editCart" style="display: none;" tapmode='' onclick='editCart()'>
+				编辑
+			</div>
+		</div>
+		<div id="main"></div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="script/api.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		var headerH, footerH, frameH, frameH2;
+		var NVTabBar;
+		var jpush;
+		var huaweiPush;
+		var isEdit = 0;
+		var uid;
+		apiready = function() {
+			if (api.systemType != 'ios') {
+				api.requestPermission({
+		            list: ['location','storage','photos','microphone','camera'],
+		            code: 1
+		        }, function(ret, err) {
+		        	var flag = 1;
+		        	for (var i = 0;i<ret.list.length;i++){
+		        		if (!ret.list[i].granted)
+		        		{
+		        			flag = 0;
+		        			break;
+		        		}
+		        	}
+		        	if (flag == 0)
+		        	{
+			            api.alert({
+			                msg: '您拒绝了基础权限，导致系统无法运行'
+			            });
+			        }
+		        });
+			}
+			setCacheData('isfirst', 0);
+			init();
+			getConfig();
+			closeWindow();
+			//获取后台配置
+			api.addEventListener({
+				name : 'viewappear'
+			}, function(ret, err) {
+				changePushTag(uid);
+			});
+			//极光相关
+			jpush = api.require('ajpush');
+			var user = $api.getStorage("user");
+			if (isNotNull(user)) {
+				uid = user.id;
+			} else {
+				uid = api.deviceId.replace(/-/g, '');
+			}
+			
+			openpush(uid, [uid]);
+			api.addEventListener({
+				name : 'setPushTag'
+			}, function(ret, err) {
+				setPushTag(uid, ret.value.tag);
+			});
+			api.addEventListener({
+				name : 'goCenter'
+			}, function(ret, err) {
+				changeFrame(ret.value.num);
+			});
+			api.addEventListener({
+				name : 'showEditCart'
+			}, function(ret, err) {
+				//coding...
+				if (ret.value.show == 0) {
+					$('#editCart').hide();
+				} else {
+					$('#editCart').show();
+				}
+			});
+			api.addEventListener({
+				name : 'resume'
+			}, function(ret, err) {
+				//coding...
+				checkClipboard();
+				jpush.setBadge({
+					badge : 0
+				});
+			});
+			api.addEventListener({
+				name : 'loginsuccess'
+			}, function(ret, err) {
+				loadAddress();
+				if (isNotNull(jpush)) {
+					jpush.setListener(function(ret2) {
+					});
+				}
+				api.closeWin({
+					name : "login"
+				});
+			});
+			api.addEventListener({
+				name : 'refOp'
+			}, function(ret, err) {
+				//coding...
+				var showCart = api.getGlobalData({
+					key : 'showCart'
+				});
+				$('#editCart').html('编辑');
+				isEdit = 0;
+				if (showCart == 1) {
+					$('#editCart').show();
+				} else {
+					$('#editCart').hide();
+				}
+			});
+			//在Android平台，使用极光推送发送通知、消息等类型推送时，极光推送模块会往设备状态栏上发送通知，当通知被点击后，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
+			api.addEventListener({
+				name : 'appintent'
+			}, function(ret, err) {
+				if(isNotNull(ret) && isNotNull(ret.appParam.ajpush)){
+					
+					if(isNotNull(ret.appParam.ajpush.extra.extra)){
+						
+						if(ret.appParam.ajpush.extra.extra==8){
+							api.sendEvent({
+								name : 'chat'
+							});
+							api.sendEvent({
+								name : 'goCenter',
+								extra : {
+									num : 3
+								}
+							});
+						}else if(ret.appParam.ajpush.extra.extra==6){
+							tenants();
+						}else{
+							api.sendEvent({
+								name : 'chat'
+							});
+							api.sendEvent({
+								name : 'goCenter',
+								extra : {
+									num : 3
+								}
+							});
+							getNoticeInfo();
+						}
+					}
+				}
+			});
+			//在iOS平台，使用极光推送发送通知时，若应用在前台运行，则推送内容可以通过setListener方法监听到，若应用在后台，系统会往设备通知栏发送通知，当通知被点击后，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
+			api.addEventListener({
+			    name:'noticeclicked'
+			},function(ret,err){
+				if(isNotNull(ret) && isNotNull(ret.value)){
+				
+					if(isNotNull(ret.value.extra.extra)){
+						if(ret.value.extra.extra==8){
+							api.sendEvent({
+								name : 'chat'
+							});
+							api.sendEvent({
+								name : 'goCenter',
+								extra : {
+									num : 3
+								}
+							});
+							
+						}else if(ret.value.extra.extra==6){
+							tenants();
+						}else{
+							api.sendEvent({
+								name : 'chat'
+							});
+							api.sendEvent({
+								name : 'goCenter',
+								extra : {
+									num : 3
+								}
+							});
+							getNoticeInfo();
+						}
+					}	
+				}	
+			});
+		}
+		function init() {
+			openPage();
+		}
+		function checkClipboard() {
+			var clipBoard = api.require('clipBoard');
+			clipBoard.get(function(ret, err) {
+				if (ret) {
+					if (ret.value.indexOf('复制这段代码，打开超拼网App，即可查看详情') >= 0) {
+						var start = ret.value.indexOf('#');
+						var end = ret.value.indexOf('#', start + 1);
+						var code = ret.value.substring(start + 1, end);
+						var url = "product/getShare.do";
+						var bodyParam = {
+							body : {
+								key : code
+							}
+						};
+						ajaxRequest(url, bodyParam, function(ret, err) {
+							if (ret.code == 1) {
+								var shareContent = ret.share;
+								clipBoard.set({
+									value : ''
+								});
+								api.openFrame({
+									name : 'shareFrame',
+									bgColor : 'rgba(0,0,0,0)',
+									url : 'html/shareFrame.html',
+									rect : {
+										x : 0,
+										y : 0,
+										w : 'auto',
+										h : 'auto'
+									},
+									pageParam : {
+										data : shareContent
+									}
+								});
+							}
+						});
+					}
+				}
+			});
+		}
+
+		function editCart() {
+			if (isEdit == 0) {
+				api.sendEvent({
+					name : 'editCart'
+				});
+				$('#editCart').html('完成');
+				isEdit = 1;
+			} else {
+				api.sendEvent({
+					name : 'completeCart'
+				});
+				$('#editCart').html('编辑');
+				isEdit = 0;
+			}
+		}
+
+		function openPage() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			headerH = $api.offset(header).h;
+			footerH = 44;
+			api.setGlobalData({
+				key : 'winHeader',
+				value : headerH
+			});
+			api.setGlobalData({
+				key : 'footerH',
+				value : footerH
+			});
+			//frame的高度为当前window高度减去header和footer的高度
+			frameH = api.winHeight - headerH - footerH;
+			frameH2 = api.winHeight - footerH;
+			iconsize = 20.0;
+			api.openFrameGroup({
+				name : 'chaopin',
+				background : '#f4f2f2',
+				bgColor : '#f4f2f2',
+				scrollEnabled : false,
+				rect : {
+					x : 0,
+					y : headerH,
+					w : 'auto',
+					h : frameH
+				},
+				index : 0,
+				preload : 4,
+				frames : [{
+					name : 'index',
+					bounces : false,
+					url : 'html/index.html',
+				}, {
+					name : 'cart',
+					bounces : false,
+					url : 'html/classification.html',
+					pageParam : {
+						headerH : headerH
+					}
+				}, {
+					name : 'cart',
+					bounces : false,
+					url : 'html/cart.html',
+					pageParam : {
+						headerH : headerH
+					}
+				}, {
+					name : 'chat',
+					bounces : false,
+					url : 'html/chatlist.html',
+					pageParam : {
+						headerH : headerH
+					}
+				}, {
+					name : 'centre',
+					bounces : false,
+					url : 'html/centre.html',
+					pageParam : {
+						headerH : headerH
+					}
+				}]
+			}, function(ret, err) {
+			});
+			NVTabBar = api.require('NVTabBar');
+			NVTabBar.open({
+				styles : {
+					bg : '#fff',
+					h : footerH,
+					dividingLine : {
+						width : 0.1,
+						color : '#000'
+					},
+					badge : {
+						bgColor : '#ff0000',
+						numColor : '#fff',
+						size : 12.0,
+						fontSize : 10 //数字类型,设置徽章字体大小,默认10。注意:仅支持iOS。
+					}
+				},
+				items : [{
+					w : api.winWidth / 5.0,
+					bg : {
+						marginB : 0,
+						image : 'rgba(0,0,0,0)'
+					},
+					iconRect : {
+						w : iconsize,
+						h : iconsize,
+					},
+					icon : {
+						normal : 'widget://img/footer1.png',
+						selected : 'widget://img/footerNew1.png'
+					},
+					title : {
+						text : '首页',
+						size : 12.0,
+						normal : 'rgb(190, 193, 198)',
+						selected : 'rgb(255,165,59)',
+						marginB : 0.0
+					}
+				}, {
+					w : api.winWidth / 5.0,
+					bg : {
+						marginB : 0,
+						image : 'rgba(0,0,0,0)'
+					},
+					iconRect : {
+						w : iconsize,
+						h : iconsize,
+					},
+					icon : {
+						normal : 'widget://img/footer2.png',
+						selected : 'widget://img/footerNew2.png'
+					},
+					title : {
+						text : '分类',
+						size : 12.0,
+						normal : 'rgb(190, 193, 198)',
+						selected : 'rgb(255,165,59)',
+						marginB : 0.0
+					}
+				}, {
+					w : api.winWidth / 5.0,
+					bg : {
+						marginB : 0,
+						image : 'rgba(0,0,0,0)'
+					},
+					iconRect : {
+						w : iconsize,
+						h : iconsize,
+					},
+					icon : {
+						normal : 'widget://img/footer3.png',
+						selected : 'widget://img/footerNew3.png'
+					},
+					title : {
+						text : '购物车',
+						size : 12.0,
+						normal : 'rgb(190, 193, 198)',
+						selected : 'rgb(255,165,59)',
+						marginB : 0.0
+					}
+				}, {
+					w : api.winWidth / 5.0,
+					bg : {
+						marginB : 0,
+						image : 'rgba(0,0,0,0)'
+					},
+					iconRect : {
+						w : iconsize,
+						h : iconsize,
+					},
+					icon : {
+						normal : 'widget://img/footer5.png',
+						selected : 'widget://img/footerNew5.png'
+					},
+					title : {
+						text : '聊天',
+						size : 12.0,
+						normal : 'rgb(190, 193, 198)',
+						selected : 'rgb(255,165,59)',
+						marginB : 0.0
+					}
+				}, {
+					w : api.winWidth / 5.0,
+					bg : {
+						marginB : 0,
+						image : 'rgba(0,0,0,0)'
+					},
+					iconRect : {
+						w : iconsize,
+						h : iconsize,
+					},
+					icon : {
+						normal : 'widget://img/footer4.png',
+						selected : 'widget://img/footerNew4.png'
+					},
+					title : {
+						text : '我的',
+						size : 12.0,
+						normal : 'rgb(190, 193, 198)',
+						selected : 'rgb(255,165,59)',
+						marginB : 0.0
+					}
+				}],
+				selectedIndex : 0
+			}, function(ret, err) {
+				if (ret.eventType == 'show') {
+					checkClipboard();
+					changeFrame(0);
+				}
+				if (ret.eventType == 'click') {
+					changeFrame(ret.index);
+				}
+			});
+			api.setStatusBarStyle({
+				style : 'dark'
+			});
+		}
+
+		function changeFrame(index) {
+			$("#header").removeClass("cartempty-back");
+			//移除class
+			if (!isNotNull(index)) {
+				index = 0;
+			}
+			var NVTabBar = api.require('NVTabBar');
+			NVTabBar.setSelect({
+				index : index,
+				selected : true
+			});
+			if (index == 0 || !isNotNull(index)) {
+				$('#title').hide();
+				$('#editCart').hide();
+				api.setFrameGroupAttr({
+					name : 'chaopin',
+					rect : {
+						x : 0,
+						y : 20,
+						w : 'auto',
+						h : frameH2
+					}
+				});
+			} else if (index == 1) {
+				$('#title').html("商品分类");
+				$('#title').show();
+				$('#editCart').hide();
+				api.setFrameGroupAttr({
+					name : 'chaopin',
+					rect : {
+						x : 0,
+						y : headerH,
+						w : 'auto',
+						h : frameH
+					}
+				});
+			} else if (index == 2) {
+				$('#title').html("购物车");
+				$("#header").addClass("cartempty-back");
+				//添加class
+				$('#title').show();
+				var showCart = api.getGlobalData({
+					key : 'showCart'
+				});
+				if (showCart == 1) {
+					$('#editCart').show();
+				}
+				api.setFrameGroupAttr({
+					name : 'chaopin',
+					rect : {
+						x : 0,
+						y : headerH,
+						w : 'auto',
+						h : frameH
+					}
+				});
+			} else if (index == 4) {
+				//$('#title').html("我的");
+				$('#title').hide();
+				$('#editCart').hide();
+				api.setFrameGroupAttr({
+					name : 'chaopin',
+					rect : {
+						x : 0,
+						y : 0,
+						w : 'auto',
+						h : frameH2
+					}
+				});
+			} else if (index == 3) {
+				$('#title').html("聊天列表");
+				$('#title').show();
+				$('#editCart').hide();
+				api.setFrameGroupAttr({
+					name : 'chaopin',
+					rect : {
+						x : 0,
+						y : headerH,
+						w : 'auto',
+						h : frameH
+					}
+				});
+			}
+			api.setFrameGroupIndex({
+				name : 'chaopin',
+				index : index
+			});
+		}
+
+		function startPage() {
+			setCacheData('isfirst', 1);
+			api.openFrame({
+				name : 'initPage',
+				url : 'flashpage.html',
+				bounce : false,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+		}
+		
+	</script>
+</html>

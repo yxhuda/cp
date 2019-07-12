@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		
+	</head>
+	<style>
+		.togglebox {
+			z-index: 99999;
+			position: fixed;
+			bottom: 4%;
+			left: 68%;
+			font-weight: 600;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			text-align: center;
+			background: #000;
+			opacity: 0.7;
+			filter: alpha(opacity=70);
+			font-size: 24px;
+			color: #fff;
+		}
+		.button {
+			z-index: 99998;
+			font-size: 16px;
+			border: 0;
+			padding: 2px 5px;
+			background-color: #fff !important;
+			position: fixed;
+			left: 82%;
+			bottom: 4.5%;
+			border-radius: 5px;
+			border: 1px solid #ddd
+		}
+		body {
+			padding: 0;
+		}
+
+		.am-welcome img {
+			height: 100%;
+			width: 102%;
+			margin-top: -1.5%;
+			overflow-x:hidden;
+		}
+		.am-welcome img::-webkit-scrollbar {display:none}
+	</style>
+	<body>
+		<!-- Header -->
+		<!-- /header -->
+		<div class="togglebox">
+			<span id="num">3s</span>
+		</div>
+	
+		<!-- /navbar -->
+		<!-- Content -->
+		<div class="am-welcome">
+			<a tapmode='' onclick="tiao();"><img src="img/1080.png" ></a>
+		</div>
+		<!-- /content -->
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="script/api.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			var count = 2;
+			var st = setInterval('tiao()', 1800);
+			function tiao() {
+				var number = count--;
+				$("#num").html(number + "s");
+				if (number == 0) {
+					api.closeFrame({
+						name : 'initPage'
+					});
+					api.sendEvent({
+						name : 'goCenter',
+						extra : {
+							num : 0
+						}
+					});
+					
+				}
+			}
+
+			function locationHref() {
+				api.closeFrame({
+						name : 'initPage'
+					});
+					api.sendEvent({
+						name : 'goCenter',
+						extra : {
+							num : 0
+						}
+					});
+				//openPage();
+				clearInterval(st);
+			}
+
+			//		function tiao()
+			//		{
+			//
+			//			window.location.href='index2.html';
+			////			api.openWin({
+			////		    	name: 'index',
+			////		    	url: 'index2.html',
+			////			});
+			////			clearInterval(st);
+			//		}
+		</script>
+	</body>
+</html>
