@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>意见反馈</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+
+	<body>
+	
+		<div class="">
+			<div class="height"></div>
+			<div class="feedback">
+				<div class="feedback-title">
+					意见反馈
+				</div>
+				<textarea name="content" id="content" rows="5" cols="" maxlength="200"placeholder="必填，请您详细填写申请说明"></textarea>
+				<div class="feedbackimg">
+						<div class="ls" id="img_list">
+							
+						</div>
+						
+						<div class="feedback-img" tapmode="" onclick="uploadPhoto();">
+							<div class="refundonly-r" id="totalNumber">
+								0/3
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="height"></div>
+			<div class="feedback-list">
+				联系电话
+				<input type="tel" name="phone" id="phone" maxlength="11" value="" placeholder="请输入电话" />
+			</div>
+			<div class="button-bottom" tapmode="" onclick="setFeedback();">
+				<button>提交</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../script/feedback.js"></script>
+</html>

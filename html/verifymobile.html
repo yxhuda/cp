@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>验证手机号码</title>
+	</head>
+	<link rel="stylesheet" href="../css/hui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+
+	<body class="backg-white">
+		<div class="content">
+			<div class="logo-switch">
+				<div class="weixins">
+					<i class="icon iconfont iconweixin"></i>
+				</div>
+				<div class="switch">
+					<i class="icon iconfont iconguanlian"></i>
+				</div>
+				<div class="loginNew">
+					<img src="../img/logo.png" />
+				</div>
+			</div>
+			<div class="form">
+				<div class="form-list">
+					<input type="tel" name="phone" id="phone" maxlength="11" value="" placeholder="请输入手机号" />
+				</div>
+				<div class="form-list">
+					<input type="tel" name="code" id="code" value="" placeholder="请输入验证码"/>
+					<button class="form-button" id='getCode' tapmode="" onclick="sendMsg();">获取验证码</button>
+				</div>
+				<div class="button-bottom" tapmode="" onclick="nextStep();">
+					<button>下一步</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../script/verifymobile.js"></script>
+</html>

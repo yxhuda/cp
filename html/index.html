@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body>
+		<!--顶部导航-->
+		<div>
+			<div id="TopNavigation">
+				<img src="../img/headerimg.png" width="100%" id="classImgHtml">
+				<div class="Navs" id="classHtml"></div>
+			</div>
+			<!--banner-->
+			<div  id="wheelplanting">
+				<!--	<div class="hui-swipe" id="swipe">
+				<div class="hui-swipe-items" id="bannercontent">
+				<div class="hui-swipe-item"><img src="../img/banner.png">
+				</div>
+				</div>
+				<div class="indexSearch" style="z-index: 99">
+				<i class="icon iconfont iconsearch"></i>
+				<input type="text" name="" id="" readonly tapmode='' onclick="openSearch('search')" value="" placeholder="请输入您需要搜索的商品" />
+				</div>-->
+			</div>
+			<!--icon选择-->
+			<div id="activityHtml">
+				<div class="IndexIcon">
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+				</div>
+				<div class="IndexIcon">
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+					<div class="IndexIcon-list">
+						<div class="IndexIcon-img"><img src="../img/mrt.png" />
+						</div>
+						<p>
+							<img src="../img/fonts.png" />
+						</p>
+					</div>
+				</div>
+			</div>
+			<!--公告-->
+			<div class="announcement">
+				<div class="announcement-content">
+					<div class="announcement-img">
+						<img src="../img/newss.png"  id="newsAd" style="height: 14.58px;width: 73px;">
+					</div>
+					<div class="hui-scroll-news" id="scrollnew1"></div>
+				</div>
+			</div>
+			<!--广告-->
+			<div class="ad" id="soloaddiv" tapmode="">
+				<img src="../img/ad.png" id="soload"/>
+			</div>
+			<div class="recommendName2" style="position:relative;display: none" >
+				<div class="hot">
+					<div class="activityicon1"><img src="../img/activityicon1.png"  id="activityImg">
+					</div>
+					<div class="hot-title" id="recommendName2">
+						热销推荐
+					</div>
+					<span style="position: absolute;right:10px;margin-top:3px;font-size: 14px;color: #827f7f;" onclick="hotMore()">查看更多<i class="icon iconfont iconarrow-left" style="font-size: 14px;color: #827f7f;"></i></span>
+				</div>
+			</div>
+			<!--横排商品列表-->
+			<div class="row" id='groupProduct1'>
+				<div class="row-list">
+					<div class="row-img">
+						<img src="../img/mrt.png">
+					</div>
+					<div class="row-right">
+						<img src="../img/goodsrightimg.png">
+					</div>
+				</div>
+			</div>
+			<!--热销推荐-->
+			<div id="hotdiv" style="display: none;">
+				<div class="hot">
+					<div class="hot-img"><img src="../img/hot.png" id="hotImg">
+					</div>
+					<div class="hot-title" id="recommendName" style="position:relative">
+						爆款推荐
+					</div>
+					<span style="position: absolute;right:10px;margin-top:3px;font-size: 14px;color: #827f7f;" onclick="recommendMore()">查看更多<i class="icon iconfont iconarrow-left" style="font-size: 14px;color: #827f7f;"></i></span>
+				</div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper" id="hotHtml"></div>
+				</div>
+			</div>
+			<div class="row" id='groupProduct2'></div>
+		</div>
+		<div class="top" tapmode=''>
+			<i class="icon iconfont iconup"></i>
+			<p>
+				顶部
+			</p>
+		</div>
+		<!--拼团弹框-->
+		<div class="groupBullet" id="initiateGroup" style="display: none;">
+			<div class="Bullet-img">
+				<img src="../img/groupBullet.png" />
+			</div>
+			<div class="groupBullet-box">
+				<span>陕西</span>的<span>英姐</span><span>2</span>s前发起拼单<i class="icon iconfont iconarrow-left"></i>
+			</div>
+		</div>
+		 <script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-swipe.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../script/index.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			hui('#TopNavigation').scrollX(5, '.NavText');
+		</script>
+		<!--返回顶部-->
+		<script type="text/javascript">
+			$(".top").hide();
+			//检测屏幕高度
+			var height = $(window).height();
+			//scroll() 方法为滚动事件
+			$(window).scroll(function() {
+				if ($(window).scrollTop() > height) {
+					$(".top").fadeIn(500);
+				} else {
+					$(".top").fadeOut(500);
+				}
+			});
+			$(".top").click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 500);
+				return false;
+			});
+		</script>
+	</body>
+</html>

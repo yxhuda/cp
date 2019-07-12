@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>分享</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+
+	<body style="background: rgba(0,0,0,0)">
+	
+		<div class="shareBullet" id='sharePanel'>
+			<div class="shareBullet-box">
+				<div class="shareBullet-content">
+					<div class="shareBullet-img">
+						<img src="../img/productListDefault.png" id='productImg' />
+					</div>
+					<div class="shareBullet-name">
+						<div class="shareBullet-imges">
+							<img src="../img/verify03.png" id='headerImg' />
+						</div>
+						<div class="shareBulletName" id='realName'>
+							
+						</div>
+					</div>
+					<div class="shareBullet-title" id='productName'>
+						
+					</div>
+					<div class="shareBullet-price" id='price'>
+					
+					</div>
+					<div class="shareBullet-button" onclick='showProduct()' tapmode=''>
+						<button>
+							查看详情
+						</button>
+					</div>
+				</div>
+				<div class="shareBullet-out" tapmode='' onclick='api.closeFrame()'></div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../script/shareFrame.js"></script>
+</html>

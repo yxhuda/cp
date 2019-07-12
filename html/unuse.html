@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>店铺优选</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<style>
+			.disconnect {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 600px
+			}
+			.disconnectimg {
+				width: 100px;
+				height: 100px;
+				margin: auto;
+			}
+			.disconnectimg img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				margin: auto;
+			}
+			.disconnecttitle {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 20px
+			}
+			.disconnecttext {
+				text-align: center;
+				font-size: 14px;
+				margin-top:5px;
+				color:#999
+			}
+			.disconnecbutton {
+				width: 100%;
+			}
+			.disconnecbutton button {
+				padding: 5px 25px;
+				border: 1px solid #dedede;
+				border-radius:20px;
+				font-size: 12px;
+				margin:10px auto;
+    			display: table;
+			}
+		</style>
+	</head>
+	<body class="body">
+		<div class="" style="display: none;" id="contents">
+			<div class="searchgoods unuser notop" style="z-index:9999" >
+				<div class="unuse" id='coupon0' tapmode="" onclick="listCoupon(0);">
+					未使用
+				</div>
+				<div class="unuse" id='coupon1' tapmode="" onclick="listCoupon(1);">
+					已使用
+				</div>
+				<div class="unuse" id='coupon2' tapmode="" onclick="listCoupon(2);">
+					已过期
+				</div>
+			</div>
+			<div  id='contentHtml' style="margin-top: 40px"></div>
+		</div>
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/unuse.js"></script>
+	</body>
+</html>

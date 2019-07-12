@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>店铺优选</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<style>
+			.triangle {
+				position: relative;
+			}
+			.dup {
+				position: absolute;
+				top: -7px;
+				left: -15px;
+				width: 0;
+				height: 0;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-bottom: 6px solid black;
+			}
+			.dup1 {
+				position: absolute;
+				top: -7px;
+				left: -15px;
+				width: 0;
+				height: 0;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-bottom: 6px solid red;
+			}
+			.ddown {
+				position: absolute;
+				top: 3px;
+				left: -15px;
+				/*float: left;*/
+				width: 0;
+				height: 0;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-top: 6px solid black;
+			}
+			.ddown1 {
+				position: absolute;
+				top: 3px;
+				left: -15px;
+				/*float: left;*/
+				width: 0;
+				height: 0;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-top: 6px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="">
+			<div class="shopdetailbox">
+				<div class="shopdetailbox-img"><img src="../img/logo.png"  id="shopLogo"/>
+				</div>
+				<div class="shopfavour">
+					<span tapmode="" onclick="myFavorite()" class="colorred" id="favor">关注</span>
+				</div>
+				<div class="shopdetailbox-text">
+					商品数量：<span id="shopNum">0</span>
+				</div>
+			</div>
+			<!--热销推荐-->
+			<div class="shop" style="display: none;" id="showShopHtml">
+				<div class="shop-left">
+					<div class="shop-img"></div>
+					<div class="shop-title">
+						大家都在拼
+					</div>
+				</div>
+				<div class="shop-text">
+					查看全部<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="swiper-container" >
+				<div class="swiper-wrapper" style="" id="shoplistHtml"></div>
+			</div>
+		</div>
+		<div class="shopdetail-commodity">
+			<img src="../img/shopdetail1.png"/>
+		</div>
+		<div class="shopdetail">
+			<div class="activityNav-title   activity-navshow" onclick='newShopGood(0)'>
+				默认
+			</div>
+			<div class="activityNav-title" onclick='newShopGood(1)'>
+				新品
+			</div>
+			<div class="activityNav-title" onclick='newShopGood(2)'>
+				销量
+			</div>
+			<div class="activityNav-title" onclick='newShopGood(3)'>
+				价格
+			</div>
+			<span class="triangle" onclick="newShopGood(3)"> <span class="dup"></span> <span class="ddown"></span> </span>
+		</div>
+		<div class="body-table body-table-on">
+			<div id="activitys"></div>
+		</div>
+		<div class="service_bottom" style="display: none;" id="shopchat" tapmode='' onclick="openChat();">
+			<i class="icon iconfont iconkefu"></i>
+			<p>
+				客服
+			</p>
+		</div>
+		</div> <script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-swipe.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../script/shopdetail.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//匿名函数自调
+			$(function() {
+				//声明函数，参数三个：导航标题、当前选择项、当前标题显示内容
+				function tabs(tabTit, on, tabCon) {
+					//找到所有标题并添加单机事件
+					$(tabTit).children().click(function() {
+						//声明当前选择项
+						var index = $(tabTit).children().index(this);
+						//为当前选中项增加active，移除其兄弟元素的active
+						$(this).addClass(on).siblings().removeClass(on);
+						//选中项显示内容，未选中项隐藏内容
+						//						$(tabCon).children().eq(index).show().siblings().hide();
+					});
+				};
+				tabs(".shopdetail", "activity-navshow", "#activitys");
+			});
+		</script>
+	</body>
+</html>

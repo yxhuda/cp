@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>拼团商品详情</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/idangerous.swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mejs.css" />
+		<style>
+			#affiches {
+				color: red;
+				display: block;
+				width: 100%;
+				height: 40px;
+				overflow: hidden;
+				background: #fff;
+				position: relative
+			}
+			.affiche_text {
+				position: absolute;
+				color: red;
+				line-height: 40px;
+				display: block;
+				word-break: keep-all;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.button {
+				font-size: 12px;
+				height: 2.4px;
+				line-height: 2.4px;
+				color: #333;
+				background-color: #dedede;
+				padding: 12px;
+				border-radius: 24px;
+				z-index: 10;
+				border: none;
+				margin-right: 10px
+			}
+			.button2 {
+				background: linear-gradient(to bottom right, #f0ff12 , #ffc112 );
+				color: #333;
+				border: none
+			}
+			.zhezhao {
+				width: 100%;
+				height: 100%;
+				background-color: #000;
+				filter: alpha(opacity=50);
+				-moz-opacity: 0.5;
+				opacity: 0;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				/*display:block;*/
+				z-index: 1000;
+			}
+			.hide {
+				position: absolute;
+				height: 375px;
+				top: -9999px;
+				left: -9999px;
+			}
+			.videobox {
+				text-align: center;
+				display: none;
+				background-color: #fff;
+				padding: 10px 0;
+				border-bottom: 1px solid #f4f2f2;
+			}
+			.disconnect {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 600px
+			}
+			.disconnectimg {
+				width: 100px;
+				height: 100px;
+				margin: auto;
+			}
+			.disconnectimg img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				margin: auto;
+			}
+			.disconnecttitle {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 20px
+			}
+			.disconnecttext {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 5px;
+				color: #999
+			}
+			.disconnecbutton {
+				width: 100%;
+			}
+			.disconnecbutton button {
+				padding: 5px 25px;
+				border: 1px solid #dedede;
+				border-radius: 20px;
+				font-size: 12px;
+				margin: 10px auto;
+				display: table;
+			}
+		</style>
+	</head>
+	<body class="body">
+		<!--banner-->
+		<div style="display: none;" id="contents">
+			<div class="group-header" id="RightBut">
+				<div class="header-left" tapmode="" onclick="closeWin();">
+					<i class="icon iconfont iconright"></i>
+				</div>
+				<h1>商品详情</h1>
+				<div class="header-right" tapmode="" id='wxshare' onclick="goodsShare();">
+					<i class="icon iconfont iconfenxiang"></i>
+				</div>
+			</div>
+			<div class="swiper-container">
+				<div class="swiper-wrapper" id="groupgoodsdetailHmtl">
+					<div class=" groups-height" >
+						<img src="../img/goodsdetailimg.png">
+					</div>
+				</div>
+				<div class="pagination"></div>
+			</div>
+			<div class="vid"  style="height: 375px;display: none;"></div>
+			<div class="videobox" id="myvideo">
+				<button class="button button2 " id="video" onclick="showvideo()">
+					视频
+				</button>
+				<button class="button  img" id="img" onclick="showImg()">
+					图片
+				</button>
+			</div>
+			<div class="groupgoodsdetail-container" style="z-index: 1">
+				<div class="group-title">
+					<img src="../img/goodstitleimg.png" width="100%" id="groupbuyloadshow"/>
+					<div  id='priceDiv'>
+						<div class="group-title-top">
+							<div class="group-top-left">
+								<span id="groupbuyPrice" >￥0.00</span><span id="price">￥0.00</span>
+							</div>
+							<div class="group-top-right" style="margin-right: 10px;">
+								<span>已售：</span><span id="saleNum">0</span>
+							</div>
+						</div>
+					</div>
+					<div class="groupTitle" id="productName"></div>
+				</div>
+				<div class="Coupon-list" id="showCoupon" tapmode="" onclick="openCouponTab();">
+					<div class="Coupon-left" id="Coupon">
+						<img src="../img/couponimg.png" width="100%"/>
+					</div>
+					<div class="Coupon-right">
+						<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+				<div class="Coupon-list" id="description" style="display: none;" tapmode="" onclick="openDescriptionTab();">
+					<div class="Coupon-left" id="after_sales">
+						<img src="../img/couponimg.png" width="100%"/>
+					</div>
+					<div class="Coupon-right">
+						<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+				<div class="participate"  style="display: none;" id="groupHtml">
+					<div class="participate-title" tapmode="" onclick="openSingle();">
+						<div class="participate-left" id='groupCountText'>
+							0人在拼单，可直接参与
+						</div>
+						<div class="participate-right">
+							查看更多<i class="icon iconfont iconarrow-left"></i>
+						</div>
+					</div>
+					<div id="groupsHtml"></div>
+				</div>
+				<div class="Evaluation">
+					<div class="participate-title">
+						<div class="participate-left">
+							商品评价<span id="evalCount">(0)</span>
+						</div>
+						<div class="participate-right" style="display: none;" id="ervaluationHtml" tapmode="" onclick="moreEvaluation();">
+							查看更多<i class="icon iconfont iconarrow-left"></i>
+						</div>
+					</div>
+					<div class="Evaluation-button">
+						<div class="EvaluationButton" style="display: none;" id="noinfo">
+							总条数(0)
+						</div>
+						<div class="EvaluationButton" style="display: none;"  id="praiseCount">
+							好评总条数(0)
+						</div>
+						<div  class="EvaluationButton" style="display: none;" id="figureCount">
+							有图总条数(0)
+						</div>
+					</div>
+					<div id="productEvaluation"></div>
+				</div>
+				<div class="Shop-title margin5 padding10" style="display: none;" id="shop">
+					<div class="Shop-left">
+						<div class="Shop-img">
+							<img src="../img/logo.png" id="shopImg"/>
+						</div>
+						<div class="Shop-text">
+							<p id="shopName"></p>
+							<p id="productNum">
+								商品数量:0
+							</p>
+						</div>
+					</div>
+					<div class="Shop-right" id="goshop" tapmode="" onclick="goShop();">
+						<button>
+							进店
+						</button>
+					</div>
+				</div>
+				<!--			<div class="trapezoids" id="trapezoid"></div>-->
+				<!--<div id="notice" style="position: absolute; left:0;z-index:1000;top:-25px;color:red;"></div>-->
+				<div id="affiches">
+					<!--<div class="affiche_text" id="notice"></div>-->
+					<marquee class="affiche_text" id="notice" style="width: 200%"></marquee>
+				</div>
+				<div class="commodityDetail">
+					<div class="participate-title">
+						<div class="participate-left">
+							商品详情
+						</div>
+					</div>
+					<div>
+						<div class="commodityDetail-img" id="productDetails">
+							<!--<img src="../img/goodsdetailimg.png" width="100%"/>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="footerBottom">
+					<div class="footerBottom-list" tapmode="" onclick="footerBottom();">
+						<i class="icon iconfont icongengduo"></i>
+						<p>
+							更多
+						</p>
+					</div>
+					<div class="footerBottom-list" tapmode="" onclick="getCollection();">
+						<i class="icon iconfont iconshoucang" id="iconshoucang"></i>
+						<p>
+							收藏
+						</p>
+					</div>
+					<div class="footerBottom-list" style="display: none;" id="kefu" tapmode="" onclick="openChat()">
+						<i class="icon iconfont iconkefu"></i>
+						<p>
+							客服
+						</p>
+					</div>
+				</div>
+				<div class="footerBottoms">
+					<div class="footerBottom-lists footerBottom-ba" id="carting" tapmode="" onclick="separateBuy();">
+						<p id="cartingPrice">
+							￥0.00
+						</p>
+						<p>
+							单独购买
+						</p>
+					</div>
+					<div class="footerBottom-lists" tapmode="" onclick="initiateSingle(3);">
+						<p id="initiatePrice">
+							￥0.00
+						</p>
+						<p>
+							发起拼单
+						</p>
+					</div>
+				</div>
+			</div>
+			<!--更多弹框-->
+			<div class="showBottom">
+				<div class="Trianglebox">
+					<div class="showBottom-list" tapmode="" onclick="goHome();">
+						<i class="icon iconfont iconyemian-copy-copy"></i><span>回到首页</span>
+					</div>
+					<div class="borderlink"></div>
+					<div class="showBottom-list" tapmode="" onclick="getBrowsingHistory();">
+						<i class="icon iconfont iconlishiliulan_gerenzhongxin"></i><span>历史浏览</span>
+					</div>
+				</div>
+				<div class="Triangle"></div>
+			</div>
+			<!--优惠券弹框-->
+			<div class="Coupon-bulletin"onclick="closeCouponTab();"></div>
+			<div class="CouponBulletinThree">
+				<div class="CouponBulletin-title"  tapmode="" >
+					优惠券详情 <i class="icon iconfont iconguanbi"onclick="closeCouponTab();"></i>
+				</div>
+				<div class="CouponBulletin-content" id="CouponList"></div>
+			</div>
+			<!--服务说明弹框-->
+			<div class="description"onclick="closeDescriptionTab();"></div>
+			<div class="CouponBulletinFour">
+				<div class="CouponBulletin-title"  tapmode="" >
+					服务说明 <i class="icon iconfont iconguanbi"onclick="closeDescriptionTab();"></i>
+				</div>
+				<div class="description-content" id='after_sales_list'></div>
+			</div>
+			<!--服务说明弹框-->
+			<div class="single"></div>
+			<div class="CouponBulletin">
+				<div class="CouponBulletin-title" tapmode="" >
+					正在拼单 <i class="icon iconfont iconguanbi"onclick="closeSingle();"></i>
+				</div>
+				<div class="borderlink"></div>
+				<div class="single-content single-top" >
+					<div  id="groupsListHtml" style="position: absolute;top: 40px;width: 100%;"></div>
+					<div class="single-bottom" id="groupsListCount">
+						仅显示0个正在拼单的人
+					</div>
+				</div>
+			</div>
+			<!--返回顶部-->
+			<div class="top" tapmode="" onclick="getTop();">
+				<i class="icon iconfont iconup"></i>
+				<p>
+					顶部
+				</p>
+			</div>
+			<!--发起拼单-->
+			<div class="initiate"onclick="closeSpellTab();"></div>
+			<div class="CouponBulletins">
+				<div class="initiate-title">
+					<div class="initiate-img">
+						<img src="../img/productListDefault.png" id="goods_groupimg"/>
+					</div>
+					<div class="initiate-price">
+						<p id="goods_groupbuyPrice">
+							￥0.00
+						</p>
+						<p>
+							已选：<span id="goods_groupname">草莓</span>
+						</p>
+					</div>
+					<div class="initiate-out" tapmode="" onclick="closeSpellTab();">
+						<i class="icon iconfont iconguanbi"></i>
+					</div>
+				</div>
+				<div class="borderlink"></div>
+				<div id="groupSpecListHtml"></div>
+				<div id="groupSpecListHtml"></div>
+				<div class="borderlink"></div>
+				<div class="quantity">
+					<div class="quantity-title">
+						购买数量
+					</div>
+					<div class="quantity-box">
+						<div class="hui-wrap">
+							<div class="hui-number-box" min="1" max="100">
+								<div class="reduce group_reduce" tapmode='' onclick='reduceNum(2)'>
+									-
+								</div>
+								<input type="number" readonly="readonly" id="group_number_text" value="1"  onchange='changeGroupNum()'/>
+								<div class="add group_add" tapmode='' onclick='addNum(2)'>
+									+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="quantitylink"></div>
+				<br />
+				<div class="quantity-button" tapmode="" onclick="buyGroupGood(3);">
+					<button>
+						确定
+					</button>
+				</div>
+			</div>
+			<!--单独购买-->
+			<div class="carting"onclick="closeSeparateBuy();"></div>
+			<div class="CouponBulletinsOne" >
+				<div class="initiate-title">
+					<div class="initiate-img">
+						<img src="../img/productListDefault.png" id="goods_img"/>
+					</div>
+					<div class="initiate-price">
+						<p id="goods_price">
+							￥0.00
+						</p>
+						<p>
+							已选：<span id="goods_name">草莓</span>
+						</p>
+					</div>
+					<div class="initiate-out" tapmode="" onclick="closeSeparateBuy();">
+						<i class="icon iconfont iconguanbi"></i>
+					</div>
+				</div>
+				<div class="borderlink"></div>
+				<div id="SpecListHtml"></div>
+				<div class="borderlink"></div>
+				<div class="quantity">
+					<div class="quantity-title">
+						购买数量
+					</div>
+					<div class="quantity-box">
+						<div class="hui-wrap">
+							<div class="hui-number-box" min="1" max="100">
+								<div class="reduce good_reduce" tapmode='' onclick='reduceNum(1)'>
+									-
+								</div>
+								<input type="number" readonly="readonly" id="good_number_text" value="1" onchange='changeNum()'/>
+								<div class="add good_add" tapmode='' onclick='addNum(1)'>
+									+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="quantitylink"></div>
+				<br/>
+				<div class="quantity-button">
+					<button class="buttons btns" tapmode="" onclick="addShopCart();">
+						加入购物车
+					</button>
+					<button class="buttons" tapmode="" onclick="buyGood();">
+						立即购买
+					</button>
+				</div>
+			</div>
+			<div class="groupBullet" id="initiateGroup" style="display: none;">
+				<div class="Bullet-img">
+					<img src="../img/groupBullet.png" />
+				</div>
+				<div class="groupBullet-box">
+					<span>英姐</span><span>2s前</span><span>发起拼单</span><i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="zhezhao" id="zhezhao"></div>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mediaelement-and-player.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/idangerous.swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../script/groupgoodsdetail.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(document).scroll(function() {
+				var scrollTop = $(document).scrollTop();
+				if (scrollTop > '200') {
+					$('.group-header').css('background', '#fff');
+					$('.group-header').css('height', '44px');
+					$('.header-left').css('background', '#fff');
+					$('.header-left i').css('color', '#333');
+					$('.header-right').css('background', '#fff');
+					$('.header-right i').css('color', '#333');
+					$('.header-right i').css('fontSize', '16px');
+					$('.header-left i').css('fontSize', '16px');
+					$('.header-left i').css('lineHeight', '44px');
+					$('.header-right i').css('lineHeight', '44px');
+					$('.group-header').css('marginTop', '-44px');
+					$('.group-header').css('paddingTop', '44px');
+					$('.group-header h1').css('display', 'block');
+				} else {
+					$('.group-header').css('background', '');
+					$('.group-header').css('height', '');
+					$('.header-left').css('background', '');
+					$('.header-left i').css('color', '');
+					$('.header-right').css('background', '');
+					$('.header-right i').css('color', '');
+					$('.header-right i').css('fontSize', '14px');
+					$('.header-left i').css('fontSize', '14px');
+					$('.header-left i').css('lineHeight', '');
+					$('.header-right i').css('lineHeight', '');
+					$('.group-header').css('marginTop', '0');
+					$('.group-header').css('paddingTop', '0');
+					$('.group-header h1').css('display', 'none');
+				}
+			});
+		</script>
+		<!--<script type="text/javascript">
+		( function() {
+		var timer = setTimeout(this.marquee, 1000);
+		}());
+		function marquee() {
+		var scrollWidth = $('#affiche').width();
+		var textWidth = $('.affiche_text').width();
+		var i = scrollWidth;
+		setInterval(function() {
+		i--;
+		if (i < -textWidth) {
+		i = scrollWidth;
+		}
+		$('.affiche_text').animate({
+		'left' : i + 'px'
+		}, 20);
+		}, 20);
+		}
+		</script>-->
+	</body>
+</html>

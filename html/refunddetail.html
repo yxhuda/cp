@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>订单详情</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<style>
+		#day, #hours, #minutes, #seconds {
+			color: #f00;
+			font-weight: bold;
+		}
+	</style>
+	<body>
+		<div class="content" style="margin-top: -40px;">
+			<div class="waitreceive"  >
+				<p id="title">
+					申请已提交，商家处理中
+				</p>
+			</div>
+			<div class="waitreceive-top">
+				<div class="refunddetail-title">
+					<p>
+						若商家同意：申请将达成并退款至您的支付账户
+					</p>
+					<p>
+						若商家拒绝：您有7天时间修改申请再次提交
+					</p>
+					<p>
+						若商家未处理：超过
+						<span id="t_d" style="color: #f71c1c">00</span>
+					    <span id="t_h" style="color: #f71c1c">00</span>
+					    <span id="t_m" style="color: #f71c1c">00</span>
+					    <span id="t_s" style="color: #f71c1c">00</span>
+						 系统将自动为您退款
+					</p>
+				</div>
+			</div>
+			<div class="waitreceive-list">
+				<span>店铺名称</span><span class="colorhui" id="text1"></span>
+			</div>
+			<div class="height"></div>
+			<div class="waitreceive-list">
+				<span>售后类型</span><span class="colorhui" id="text2"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>收货状态</span><span class="colorhui" id="text3"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>退款金额</span><span class="colorred" id="text4"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>退款原因</span><span class="colorhui" id="text5"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>商品名称</span><span class="colorhui" id="text6"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>订单编号</span><span class="colorhui" id="text7"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="waitreceive-list">
+				<span>申请时间</span><span class="colorhui" id="text8"></span>
+			</div>
+			<div class="borderlink"></div>
+			<div class="myorder-button" style="padding-right:15px">
+				<!--	<div class="border-bitton"id="myborder-extend">
+				<button tapmode="" onclick="changeForm()">
+				修改申请
+				</button>
+				</div>-->
+				<div class="border-bitton" tapmode="" id="openChat" style="display: none" onclick="openChat()">
+					<button>
+						客服介入
+					</button>
+				</div>
+				<div class="border-bitton" tapmode="" id="removeRefund" onclick="dischargePetition()">
+					<button>
+						修改申请
+					</button>
+				</div>
+					<div class="border-bitton" tapmode="" id="disPetition"  style="display: none" onclick="disPetition()">
+					<button>
+						撤销申请
+					</button>
+				</div>
+				<!--<div class="border-bitton marginright"id="myborder-confirm">
+					<button tapmode="" onclick="cuiChuli()">
+						催处理
+					</button>
+				</div>-->
+			</div>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/pay.js"></script>
+		<script type="text/javascript" src="../script/refunddetail.js"></script>
+		
+	</body>
+</html>

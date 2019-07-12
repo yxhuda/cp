@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我要寄件</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+
+	<body>
+		<div class="content" style="margin-top: -50px;">
+			<div class="height"></div>
+			<div class="refundonlylist" id="list-one">
+				<span>物流公司</span><span class="refundonly-text colorhui" id="type1">选择快递公司</span><i class="icon iconfont iconicon"></i>
+			</div>
+			<div class="borderlink"></div>
+			<div class="refundlogistics">
+				<span>快递单号</span><input style="width:70%;" type="text" name="couriernumber" id="couriernumber" value="" placeholder="请输入快递单号"/>
+			</div>
+			<div class="borderlink"></div>
+		</div>
+		<!-- 消息内容 -->
+		<div class="refundonly-Bullet">
+			<div class="refundonly-Bullet-box">
+				<div class="refundonlyshow">
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="1" name="aihao0" id="a1" onchange="showSelectRes(this,1);" />
+							<label for="a1">顺丰速运</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="2" name="aihao0" id="a2" onchange="showSelectRes(this,1);" />
+							<label for="a2">圆通速递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="3" name="aihao0" id="a3" onchange="showSelectRes(this,1);" />
+							<label for="a3">申通快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="4" name="aihao0" id="a4" onchange="showSelectRes(this,1);" />
+							<label for="a4">韵达快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="5" name="aihao0" id="a5" onchange="showSelectRes(this,1);" />
+							<label for="a5">中国邮政</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="6" name="aihao0" id="a6" onchange="showSelectRes(this,1);" />
+							<label for="a6">中通快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="7" name="aihao0" id="a7" onchange="showSelectRes(this,1);" />
+							<label for="a7">EMS邮政特快专递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="8" name="aihao0" id="a8" onchange="showSelectRes(this,1);" />
+							<label for="a8">天天快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="9" name="aihao0" id="a9" onchange="showSelectRes(this,1);" />
+							<label for="a9">百世快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="10" name="aihao0" id="a10" onchange="showSelectRes(this,1);" />
+							<label for="a10">德邦快递</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="11" name="aihao0" id="a11" onchange="showSelectRes(this,1);" />
+							<label for="a11">安能物流</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="button-bottom">
+				<button onclick="setFeedback()">
+					提交申请
+				</button>
+			</div>
+		
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../script/refundlogistics.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#list-one").click(function() {
+				$(".refundonly-Bullet").toggleClass("refundonly-Bullet-on")
+			});
+			$(".refundonly-Bullet").click(function() {
+				$(this).removeClass("refundonly-Bullet-on")
+			})
+		</script>
+		<script type="text/javascript">
+			hui.formInit();
+			//表单元素数据收集演示
+			hui('#submitBtn').click(function() {
+				hui.alert('请观察控制台');
+				var data = hui.getFormData('#form1');
+				console.log(JSON.stringify(data));
+			});
+			//获取复选框的值
+			function showCheckRes(_selfBtn) {
+				var vals = new Array();
+				hui(_selfBtn).parent().find('input').each(function(cObj) {
+					if(cObj.checked) {
+						vals.push(cObj.value);
+					}
+				});
+				console.log(vals);
+			}
+			//获取单选框的值
+			function showSelectRes(_selfBtn) {
+				var val;
+				hui(_selfBtn).parent().find('input').each(function(cObj) {
+					if(cObj.checked) {
+						val = cObj.value;
+						var label = $(_selfBtn).parent().find('label').html()
+						$("#type1").html(label);
+					}
+				});
+				console.log(val);
+			}
+		</script>
+	</body>
+
+</html>

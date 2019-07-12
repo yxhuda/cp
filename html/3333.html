@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>确认订单</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<style type="text/css">
+		.with-time {
+			text-align: center;
+			color: #999;
+			margin: 10px 0;
+		}
+		.with-img-right {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: 10px;
+			float: right;
+		}
+		.with-img-right img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.with-img {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-right: 10px;
+			float: left;
+		}
+		.with-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.content-box {
+			padding: 0 10px;
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+		.with-left {
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		.with-right {
+			overflow: hidden;
+			float: right;
+			margin-bottom: 20px;
+		}
+		.with-text {
+			background: #fff;
+			padding: 10px;
+			border-radius: 3px;
+			font-size: 15px;
+			float: left;
+			max-width: 60%;
+			margin-top: 2px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-right: 15px;
+			word-break: break-all;
+			word-wrap: break-word;
+			margin-left: 5px;
+		}
+		.noborders {
+			padding: 0 !important;
+			margin: 0 5px
+		}
+		.with-text:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			left: -10px;
+			top: 13px;
+			border-top: 7px solid transparent;
+			border-right: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.with-text-right {
+			background: #ffeb3b;
+			padding: 8px 10px;
+			border-radius: 3px;
+			font-size: 16px;
+			float: right;
+			max-width: 65%;
+			color: #333;
+			line-height: 20px;
+			margin-top: 3px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-right: 5px;
+			word-break: break-all;
+			word-wrap: break-word;
+		}
+		.with-text-right:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			right: -10px;
+			top: 9px;
+			border-top: 7px solid transparent;
+			border-left: 10px solid #ffeb3b;
+			border-bottom: 7px solid transparent;
+		}
+		.with-bottom {
+			width: 100%;
+			bottom: 0;
+			position: fixed;
+			left: 0;
+			background: #fff;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 10px;
+		}
+		.with-input {
+			width: 85%;
+			margin-right: 5px;
+		}
+		.with-input input {
+			width: 100%;
+			line-height: 30px;
+			border-radius: 30px;
+			text-indent: 1em;
+		}
+		.with-icon {
+			width: 8%;
+			text-align: center;
+			border: 1px solid #333;
+			border-radius: 50%;
+		}
+		.with-icon i {
+			font-size: 12px;
+		}
+		.with-icon {
+			transform: rotate(45deg);
+		}
+		.vo-text-left {
+			height: 36px;
+			min-width: 50px;
+			background: #fff;
+			border-radius: 3px;
+			line-height: 30px;
+			max-width: 65%;
+			display: flex;
+			align-items: center;
+			padding: 0 10px;
+			position: relative;
+		}
+		.vo-text-left img {
+			width: 20px;
+			height: 20px
+		}
+		.vo-text-left:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			left: -10px;
+			top: 13px;
+			border-top: 7px solid transparent;
+			border-right: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.vo-text-right {
+			height: 36px;
+			min-width: 50px;
+			background: #fff;
+			border-radius: 3px;
+			line-height: 30px;
+			max-width: 65%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding: 0 10px;
+			position: relative;
+			margin-right: 5px;
+			margin-top: 3px;
+		}
+		.vo-text-right:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			right: -10px;
+			top: 9px;
+			border-top: 7px solid transparent;
+			border-left: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.vo-text-right img {
+			width: 20px;
+			height: 20px
+		}
+		.vo-left {
+			float: left;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-start;
+		}
+		.vo-right {
+			float: right;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.with-img-right {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: 10px;
+			float: right;
+		}
+		.new {
+			background: #fff;
+			padding: 5px;
+			width: 70%;
+			border-radius: 5px;
+			flex: 1
+		}
+		.new-top {
+			display: flex;
+			justify-content: flex-start;
+			padding: 5px;
+			border-bottom: 1px solid #f5f5f5
+		}
+		.newimg {
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+		}
+		.newimg img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.new-titme {
+			width: 67%;
+			margin-left: 3%;
+		}
+		.new-title {
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			line-height: 16px;
+			font-weight: 600
+		}
+		.new-red {
+			color: red;
+			font-size: 12px;
+			margin-top: 10px
+		}
+		.numberNew {
+			font-size: 12px;
+			color: #999;
+			margin-top: 5px;
+		}
+		.numberNew span {
+			font-size: 12px;
+			color: #999
+		}
+		.dingnewnew {
+			background: #fff;
+			padding: 5px;
+			border-radius: 5px;
+			margin: 10px
+		}
+		.dingnewnew-top {
+			display: flex;
+			justify-content: flex-start;
+			padding: 5px;
+			/*border-bottom: 1px solid #f5f5f5*/
+		}
+		.dingnewnewimg {
+			width: 80px;
+			height: 80px;
+			overflow: hidden;
+		}
+		.dingnewnewimg img {
+			width: 100%;
+			height: 100%;
+			/*object-fit: cover;*/
+		}
+		.dingnewnewimgs {
+			width: 80px;
+			height: 80px;
+			overflow: hidden;
+		}
+		.dingnewnewimgs img {
+			width: 100%;
+			height: 100%;
+			/*			object-fit: cover;*/
+		}
+		.dingnewnew-title-box {
+			flex: 1;
+			margin-left: 10px
+		}
+		.dingnewnew-title {
+			font-size: 15px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			line-height: 16px;
+			font-weight: 600;
+		}
+		.dingltextbox {
+			color: red
+		}
+		.dingnewnew-red {
+			color: red;
+			font-size: 12px;
+			margin-top: 10px
+		}
+		.dingnewnumberNew {
+			font-size: 12px;
+			color: #999;
+			margin-top: 5px;
+		}
+		.dingnewnumberNew span {
+			font-size: 12px;
+			color: #999
+		}
+		.dingls {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 18px;
+		}
+		.dingl-left span:nth-child(1) {
+			color: red;
+			font-size: 12px
+		}
+		.dingl-left span:nth-child(2) {
+			color: red;
+			font-size: 18px;
+			margin: 0 3px
+		}
+		.dingl-left span:nth-child(3) {
+			color: #999;
+			font-size: 12px
+		}
+		.ding-buttons button {
+			background: #fff;
+			border: 1px solid red;
+			padding: 3px 5px;
+			border-radius: 3px;
+			color: red;
+		}
+		.dingtext {
+			display: flex;
+			justify-content: center;
+			padding: 5px
+		}
+		.dingtext-test {
+			margin-right: 10px;
+			color: #999;
+			font-size: 12px;
+			margin: 0 5%
+		}
+		.consulting {
+			float: right;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.consultingbox {
+			background: #fff;
+			padding: 5px;
+			width: 55%;
+			border-radius: 5px
+		}
+		.consultingbox-img {
+			width: 100%;
+			height: 200px
+		}
+		.consultingbox img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.consulting-title {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			overflow: hidden;
+		}
+		.consulting-text {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.consultingText-color {
+			color: #999
+		}
+		.consultingText span:nth-child(1) {
+			font-size: 12px;
+			color: red
+		}
+		.consultingText span:nth-child(2) {
+			font-size: 14px;
+			color: red;
+		}
+		.consultings {
+			float: left;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-start;
+			margin: 10px 0
+		}
+		.img {
+			width: 70%;
+			margin-top: 6%;
+		}
+	</style>
+	<body style="padding-bottom:70px">
+		<div class="" name="chatcontent" id='chatcontent'style="padding-bottom:10px;    overflow: hidden;">
+			<div class="content-box">
+				<div class="with-time">
+					2019年06月06 日  下午 15:39
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559806753" tapmode=""  onclick="setClipboardChat('Ghhh ')">
+						Ghhh
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					2019年06月06 日  下午 16:30
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559809812" tapmode=""  onclick="setClipboardChat('Rff ')">
+						Rff
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559809816" tapmode=""  onclick="setClipboardChat('Fgfd ')">
+						Fgfd
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559809820" tapmode=""  onclick="setClipboardChat('Rffc ')">
+						Rffc
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					2019年06月06 日  下午 19:14
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559819679" tapmode=""  onclick="setClipboardChat('Fgfd ')">
+						Fgfd
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					2019年06月07 日  上午 00:25
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559838300" tapmode=""  onclick="setClipboardChat('看那脸')">
+						看那脸
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559838304" tapmode=""  onclick="setClipboardChat('alone')">
+						alone
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1559838310" tapmode=""  onclick="setClipboardChat('看到')">
+						看到
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					2019年06月10 日  上午 09:25
+				</div>
+				<div class="with-left">
+					<div class="with-img"><img src="https://admin.chaopin100.com//product//20190424/8824d795d2f845adb491c63c2d4f59a4.jpg" />
+					</div>
+					<div class="with-text" id="UserMsg1560129950" tapmode=""  onclick="setClipboardChat('rentiankang')">
+						rentiankang
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					星期四 上午 09:48
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560390511" tapmode=""  onclick="setClipboardChat('春节快乐')">
+						春节快乐
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="consulting">
+					<div class="consultingbox" tapmode="" onclick="getGoods('1118705276366737409','0','0');">
+						<div class="consultingbox-img"><img src="../img/productListDefault.png" id="product_ls_1434"/>
+						</div>
+						<div class="consulting-title">
+							21好利来蒲公英空气巧克力松露巧克力生巧克力礼盒黑巧克力送钢叉
+						</div>
+						<div class="consulting-text">
+							<div class="consultingText">
+								<span>￥</span><span>0.01</span>
+							</div>
+							<div class="consultingText-color">
+								已售138件
+							</div>
+						</div>
+					</div>
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560390528" tapmode=""  onclick="setClipboardChat('把距离')">
+						把距离
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560390531" tapmode=""  onclick="setClipboardChat('本本')">
+						本本
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560390533" tapmode=""  onclick="setClipboardChat('lone')">
+						lone
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560390549" tapmode=""  onclick="setClipboardChat('哦哦哦')">
+						哦哦哦
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					星期四 上午 10:54
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560394473" tapmode=""  onclick="setClipboardChat('快哭了')">
+						快哭了
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time"></div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560394495" tapmode=""  onclick="setClipboardChat('牛仔')">
+						牛仔
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					星期四 上午 10:57
+				</div>
+				<div class="with-right">
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+					<div class="with-text-right" id="selfMsg1560394664" tapmode=""  onclick="setClipboardChat('测试')">
+						测试
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					上午 12:03
+				</div>
+				<div class="vo-right">
+					<div class="vo-text-right"  tapmode=""  onclick="play('https://admin.chaopin100.com/memberpic/20190617120354voice.amr','right_b_1560744234')"><img src="../img/right_b.png" id="right_b_1560744234"  data-icon="../img/right_b.png" data-iconGif="../img/right_b1.gif"/> &nbsp;1"
+					</div>
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+				</div>
+			</div>
+			<div class="content-box">
+				<div class="with-time">
+					下午 14:25
+				</div>
+				<div class="vo-right">
+					<div class="vo-text-right"  tapmode=""  onclick="play('https://admin.chaopin100.com/memberpic/20190617142532voice.amr','right_b_1560752732')"><img src="../img/right_b.png" id="right_b_1560752732"  data-icon="../img/right_b.png" data-iconGif="../img/right_b1.gif"/> &nbsp;1"
+					</div>
+					<div class="with-img-right"><img src="https://admin.chaopin100.com/memberpic/201905301533458191BBEF-4E6D-48F5-9194-886344F4F1CC-2653-000000844822B4B0.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id='blank'></div>
+		<div id='bar'></div>
+		<div id="gif" class="svger" style="display:none;top: 20%;left: 10%;position: fixed;">
+			<i><img src="../img/2.gif" style="border-radius:15px;width: 200px;height: 200px;position: relative;left: -20px;"   /></i>
+		</div>
+		<div class="single"onclick="closeSingle();"></div>
+		<div class="CouponBulletin">
+			<div class="CouponBulletin-title" tapmode="">
+				订单列表 <i class="icon iconfont iconguanbi"onclick="closeSingle();"></i>
+			</div>
+			<div class="single-content" id="chatOrderList"></div>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/chat.js"></script>
+		<!--数量加减-->
+		<script type="text/javascript">
+			//一句话即可完成js工作
+			hui.numberBox();
+		</script>
+	</body>
+</html>

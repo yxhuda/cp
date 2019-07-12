@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<style>
+	
+	</style>
+	<body>
+	<header class="hui-header-opacity" style="display: none;z-index: 9999">
+			<h1>个人中心</h1>
+		</header>
+		<div class="center-content">
+			<div class="center-header">
+				<div class="center-top" tapmode="" onclick="openWinNew('personinfor', '我的资料', {}, {},true)">
+					<div class="centerleft">
+						<div class="center-img">
+							<img src="../img/verify03.png" id="header_pic" />
+						</div>
+						<div class="center-title">
+							<div class="center-name">
+								<div class="centerTitle" id="realName">
+									未登录
+								</div>
+								<div class="center-weixin" style="display: none;" id="wxLogin">
+									<i class="icon iconfont iconweixin"></i>
+								</div>
+							</div>
+							<div class="centerTop-text" id="autograph">
+								暂无信息
+							</div>
+						</div>
+					</div>
+					<div class="centerright">
+						<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+			</div>
+			<div class="center-list">
+				<div class="centerlist-box" tapmode="" onclick="myorder(-1);">
+					<div class="centerlist-title">
+						我的订单
+						
+					</div>
+					<div class="participate-right">
+						查看全部<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+				<div class="center-contentlist">
+					<div class="centerlist" tapmode="" onclick="myorder(0);">
+						<div class="centerlistBox"><span class="centre-num orderCount0"></span>
+							<img src="../img/header2.png"/>
+						</div>
+						<p>待付款</p>
+					</div>
+					<div class="centerlist" tapmode="" onclick="myorder(1);">
+						<div class="centerlistBox"><span class="centre-num orderCount1"></span>
+							<img src="../img/header3.png"/>
+						</div>
+						<p>待发货</p>
+					</div>
+					<div class="centerlist" tapmode="" onclick="myorder(2);">
+						<div class="centerlistBox"><span class="centre-num orderCount2"></span>
+							<img src="../img/header4.png"/>
+						</div>
+						<p>待收货</p>
+					</div>
+					<div class="centerlist" tapmode="" onclick="myorder(3);">
+						<div class="centerlistBox"><span class="centre-num orderCount3"></span>
+							<img src="../img/header5.png"/>
+						</div>
+						<p>待评价</p>
+					</div>
+					<div class="centerlist" tapmode="" onclick="myorder(5);">
+						<div class="centerlistBox"><span class="centre-num orderCount4"></span>
+							<img src="../img/header6.png"/>
+						</div>
+						<p>退换货</p>
+					</div>
+				</div>
+			</div>
+			<div class="center-list">
+				<div class="centerlist-box" tapmode="" onclick="SpellOrder(-1);">
+					<div class="centerlist-title">
+						拼团订单
+					</div>
+					<div class="participate-right">
+						查看全部<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+				<div class="center-contentlist">
+					<div class="centerlists" tapmode="" onclick="SpellOrder(0);">
+						<div class="centerlistBox"><span class="centre-num clusterOrderCount0"></span>
+							<i class="icon iconfont iconfukuan"></i>
+						</div>
+						<p>待付款</p>
+					</div>
+					<div class="centerlists" tapmode="" onclick="SpellOrder(1);">
+						<div class="centerlistBox"><span class="centre-num clusterOrderCount1"></span>
+							<i class="icon iconfont iconfahuo"></i>
+						</div>
+						<p>待发货</p>
+					</div>
+					<div class="centerlists" tapmode="" onclick="SpellOrder(2);">
+						<div class="centerlistBox"><span class="centre-num clusterOrderCount2"></span>
+							<i class="icon iconfont iconshouhuo2"></i>
+						</div>
+						<p>待收货</p>
+					</div>
+					<div class="centerlists" tapmode="" onclick="SpellOrder(3);">
+						<div class="centerlistBox"><span class="centre-num clusterOrderCount3"></span>
+							<i class="icon iconfont iconevaluate-jf"></i>
+						</div>
+						<p>待评价</p>
+					</div>
+					<div class="centerlists" tapmode="" onclick="SpellOrder(5);">
+						<div class="centerlistBox"><span class="centre-num clusterOrderCount4"></span>
+							<i class="icon iconfont iconfenxiang"></i>
+						</div>
+						<p>待分享</p>
+					</div>
+				</div>
+			</div>
+			<div class="center-icon">
+				<div class="centerIcon-list" tapmode="" onclick="openWinNew('unuse', '优惠券', {}, {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont iconyouhuiquan1 centerIconColor1"></i>
+						<p>优惠券</p>
+					</div>
+				</div>
+				<div class="centerIcon-list" tapmode="" onclick="openWinNew1('favouritegoods', '商品收藏', {}, {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont iconshangpinshoucang centerIconColor2"></i>
+						<p>商品收藏</p>
+					</div>
+				</div>
+				<div class="centerIcon-list" tapmode="" onclick="openWinNew('favouriteshop', '店铺收藏',[], {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont icondianpushoucang_gerenzhongxin centerIconColor3"></i>
+						<p>店铺收藏</p>
+					</div>
+				</div>
+				<div class="centerIcon-list border-top" tapmode=""  onclick="openChat()">
+					<div class="centerIcon">
+						<i class="icon iconfont iconkefu centerIconColor1"></i>
+						<p>客服</p>
+					</div>
+				</div>
+		
+		
+				<div class="centerIcon-list border-top" tapmode="" onclick="openWinNew('addresslist', '收货地址', {}, {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont icondingwei centerIconColor1"></i>
+						<p>收货地址</p>
+					</div>
+				</div>
+				<div class="centerIcon-list border-top" tapmode="" onclick="history()">
+					<div class="centerIcon">
+						<i class="icon iconfont iconlishiliulan_gerenzhongxin centerIconColor4"></i>
+						<p>历史浏览</p>
+					</div>
+				</div>
+				<div class="centerIcon-list border-top" tapmode="" onclick="tenants()">
+					<div class="centerIcon">
+						<i class="icon iconfont iconiconfontruzhu-copy centerIconColor7"></i>
+						<p>商家入驻</p>
+					</div>
+				</div>
+				
+				<div class="centerIcon-list border-top" tapmode="" onclick="openWinNew('set', '个人设置', {}, {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont iconshezhi centerIconColor5"></i>
+						<p>个人设置</p>
+					</div>
+				</div>
+				<div class="centerIcon-list border-top" id='spread' style='display:none' tapmode="" onclick="openWinNew('Promotion','推广中心', {}, {},true)">
+					<div class="centerIcon">
+						<i class="icon iconfont icontuiguang centerIconColor6"></i>
+						<p>推广中心</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="activity-ad">
+				<!--<img src="../img/ad.png"  id="adImg" tapmode="" onclick="goAdd()"/>-->
+			</div>
+			<div class="activity-content margins" id="activity">
+			</div>
+		</div>
+
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/centre.js"></script>
+		<!-- 滚动头部 -->
+			<script>
+			$(document).scroll(function () {
+	            var scrollTop = $(document).scrollTop();
+	            if (scrollTop > '1') {
+	                $('.hui-header-opacity').css('display','block')
+	            } else {
+	
+	                $('.hui-header-opacity').css('display','none')
+	            }
+	        });
+		</script>
+	</body>
+</html>

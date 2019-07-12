@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>推广中心</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<style type="text/css">
+		html{
+			height:100%
+		}
+		.promotionbody {
+			background: url(../img/promotion.jpg)no-repeat;
+			background-size: 100% 100%;
+			width:100%;
+			height:100%;
+			position: fixed
+		}
+		.promotion {
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			width:100%
+		}
+		.promotionBox {
+			background: #fff;
+			padding:30px 15px;
+			margin:10px 5px;
+			border-radius:5px;
+			text-align: center;
+			width: 50%;
+			border-right:1px solid #fbfbfb;
+			box-shadow: 3px 2px 7px #da6a10;
+		}
+		.promotionBox p:nth-child(1) {
+			font-size: 16px;
+			margin-bottom: 5px;
+			
+		}
+		.promotionBox p:nth-child(2) {
+			color: #f76800;
+			font-size: 14px;
+		}
+		.promotionIcon {
+			display: flex;
+			justify-content: center;
+			margin: 0 5px;
+			background: #fff;
+			border-radius: 5px;
+			box-shadow: 3px 2px 7px #da6a10;
+		}
+		.promotionIcon div:nth-child(2) {
+			border-right: 1px solid #efefef;
+			border-left: 1px solid #efefef;
+		}
+		.promotionList {
+			width: 33%;
+			text-align: center;
+			padding: 10px 0;
+		}
+		.promotionList i {
+			font-size: 40px;
+			line-height: 50px;
+		}
+		.promotionList p:nth-child(3) {
+			font-size: 12px;
+			color: #f76800;
+		}
+		.promotioncolor1 {
+			color: #f6b324;
+		}
+		.promotioncolor2 {
+			color: #f88b48;
+		}
+		.promotioncolor3 {
+			color: #35cef8;
+		}
+		.incomebox {
+			background: #fff;
+			display: flex;
+			justify-content: flex-start;
+			padding: 10px;
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.typeboxlist {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+			background: #fff;
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.typeboxlist-l {
+			background: #1AD99D;
+			width: 50px;
+			height: 50px;
+			color: #fff;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 50px;
+		}
+		.typeboxlist-z {
+			color: #999;
+		}
+		.typeboxlist-r p:nth-child(2) {
+			color: #999;
+		}
+		.disconnect {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 600px
+			}
+			.disconnectimg {
+				width: 100px;
+				height: 100px;
+				margin: auto;
+			}
+			.disconnectimg img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				margin: auto;
+			}
+			.disconnecttitle {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 20px
+			}
+			.disconnecttext {
+				text-align: center;
+				font-size: 14px;
+				margin-top:5px;
+				color:#999
+			}
+			.disconnecbutton {
+				width: 100%;
+			}
+			.disconnecbutton button {
+				padding: 5px 25px;
+				border: 1px solid #dedede;
+				border-radius:20px;
+				font-size: 12px;
+				margin:10px auto;
+    			display: table;
+			}
+	</style>
+	<body class="promotionbody body">
+	<div style="display: none;" id="contents">
+		<div>
+			<!--<div class="borderlink"></div>-->
+				<div class="promotion">
+					<div class="promotionBox" tapmode="" onclick="profit()">
+						<p>
+							可提现
+						</p>
+						<p id='waitPay'></p>
+					</div>
+					<div class="promotionBox" tapmode="" onclick="incomelist()">
+						<p>
+							已提现
+						</p>
+						<p id='paied'></p>
+					</div>
+				</div>
+				<div class="promotionIcon">
+					<div class="promotionList"  tapmode="" onclick="openWinNew('team','我的团队', {}, {},true)">
+						<i class="icon iconfont icontubiao--copy promotioncolor1"></i>
+						<p>
+							我的团队
+						</p>
+						<p id='teamcount'></p>
+					</div>
+					<div class="promotionList" tapmode="" onclick="openWinNew('promotionCode','推广二维码', {}, {},true)">
+						<i class="icon iconfont iconico promotioncolor2"></i>
+						<p>
+							推广二维码
+						</p>
+					</div>
+					<div class="promotionList" >
+						<i class="iicon iconfont iconshouyi promotioncolor3"></i>
+						<p>
+							累计收益
+						</p>
+						<p id='totalMoney'></p>
+					</div>
+				</div>
+			
+		</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../script/promotion.js"></script>
+</html>

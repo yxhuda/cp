@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>确认订单</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<body id="contents">
+		<div class="">
+			<div class="borderlink"></div>
+			<div class="confirmorder" tapmode="" onclick="goAddress();">
+				<div class="confirmorder-Positioning">
+					<i class="icon iconfont iconlocation"></i>
+				</div>
+				<div class="confirmorder-address center " id="Address1">
+					<div class="confirmorder-top">
+						<span id="buyName">miss</span><span id="buyPhone">15686207825</span>
+					</div>
+					<div class="confirmorder-bottom" id="buyaddress">
+						陕西省&nbsp;西安市&nbsp;雁塔区&nbsp;稀释家园小区
+					</div>
+				</div>
+				<div class="confirmorder-address center " id="Address2">
+					<div class="confirmorder-top">
+						<span class="addspan" id="buyPhone">暂无收货地址，赶快去添加吧！</span>
+					</div>
+				</div>
+				<div class="confirmorder-right">
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="confirmorder-list">
+				<div id='orderList'></div>
+			</div>
+			<div class="paymentMethod">
+				<div class="hui-form-radios">
+					<div class="payment-method">
+						<div class="weixin"></div>
+						<div class="payment-method-text center">
+							微信支付
+						</div>
+						<input type="radio" id="g1" value="1"name="gender"  checked="checked" onchange="showSelectRes(this);" />
+						<label for="g1"></label>
+					</div>
+					<div class="payment-method">
+						<div class="zhifubao"></div>
+						<div class="payment-method-text center">
+							支付宝支付
+						</div>
+						<input type="radio" value="2" name="gender"  id="g2" onchange="showSelectRes(this);" />
+						<label for="g2"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottomPayment">
+			<div class="bottomPayment-left">
+				<span>合计：</span>￥<span id='totalPrice'></span>
+			</div>
+			<div class="bottomPayment-right" tapmode="" onclick="paySubmit();">
+				立即支付
+			</div>
+		</div>
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/hui-form.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/pay.js"></script>
+		<script type="text/javascript" src="../js/freight.js"></script>
+		<script type="text/javascript" src="../script/cartorder.js"></script>
+		<script></script>
+	</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>申请退款</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<body style="margin-top: -10px;">
+		<div class="height"></div>
+		<div class="refundonlylist" id="list-one">
+			<span>申请类型</span><span class="refundonly-text colorhui" id="type1">点击选择退货退款</span><i class="icon iconfont iconicon"></i>
+		</div>
+		<div class="borderlink"></div>
+		<div class="refundonlylist" id="list-two">
+			<span>收货状态</span><span class="refundonly-text colorhui" id="type2">点击选择货物状态</span><i class="icon iconfont iconicon"></i>
+		</div>
+		<div class="borderlink"></div>
+		<div class="refundonlylist" id="list-three">
+			<span>申请原因</span><span class="refundonly-text colorhui" id="type3">点击选择申请原因</span><i class="icon iconfont iconicon"></i>
+		</div>
+		<div class="height"></div>
+		<div class="refundonlybox">
+			<span>退款金额</span><span style="color: red;">￥</span>
+			<input type="number" step="1"  min="0" onkeyup="this.value= this.value.match(/\d+(\.\d{0,2})?/) ? this.value.match(/\d+(\.\d{0,2})?/)[0] : ''" name="userPrice" id='userPrice' value="" style="width: 120px;color: #000;text-shadow: 0px 0px 0px #ff0000;-webkit-text-fill-color: transparent;background-color: #fff;" value="￥" class="HUI_Input_Clear" placeholder=""  />
+			<!--<cite id='price'>最多退款金额 ￥16.40</cite>-->
+		</div>
+		<div class="height"></div>
+		<div class="feedback">
+			<div class="feedback-title">
+				申请说明
+			</div>
+			<textarea name="content" id="content" rows="5" cols="" maxlength="200"placeholder="必填，请您详细填写申请说明"></textarea>
+			<div class="feedbackimg">
+						<div class="ls" id="img_list">
+							
+						</div>
+						
+						<div class="feedback-img" tapmode="" onclick="uploadPhoto();">
+							<div class="refundonly-r" id="totalNumber">
+								0/3
+							</div>
+						</div>
+					</div>
+		</div>
+		<div class="height"></div>
+			<div class="feedback-list">
+			<div class="refundonlybox">
+			<span>联系电话</span><span style="color: black!important;"></span>
+			<input type="number"  onkeyup="this.value= this.value.match(/\d+(\.\d{0,2})?/) ? this.value.match(/\d+(\.\d{0,2})?/)[0] : ''" name="phone" id='phone' value="" style="width: 120px;color: black!important"  placeholder="15685624585"  />
+			
+		</div>
+		<div class="button-bottom">
+			<button onclick="setFeedback()">
+				提交申请
+			</button>
+		</div>
+		</div> <!-- 消息内容 -->
+		<div class="refundonly-Bullet">
+			<div class="refundonly-Bullet-box-height" >
+				<div class="refundonlyshow">
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="1" name="aihao0" id="a1" onchange="showSelectRes(this,1);" />
+							<label for="a1">我要退款（无需退货）</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="2" name="aihao0" id="a2" onchange="showSelectRes(this,1);" />
+							<label for="a2">我要退货退款</label>
+						</div>
+					</div>
+				</div>
+				<div class="refundonlyguanbi" onclick="guanbi(1)">
+					关闭
+				</div>
+			</div>
+		</div>
+		<!-- 消息内容 2-->
+		<div class="refundonly-Bullet-two">
+			<div class="refundonly-Bullet-box-height">
+				<div class="refundonlyshow">
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="1" name="aihao1" id="b1" onchange="showSelectRes(this,2);" />
+							<label for="b1">未收货</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="2" name="aihao1" id="b2" onchange="showSelectRes(this,2);" />
+							<label for="b2">已收货</label>
+						</div>
+					</div>
+				</div>
+				<div class="refundonlyguanbi" onclick="guanbi(2)">
+					关闭
+				</div>
+			</div>
+		</div>
+		</div> <!-- 消息内容 3-->
+		<div class="refundonly-Bullet-three">
+			<div class="refundonly-Bullet-box-height">
+				<div class="refundonlyshow" id="myreson">
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="2" name="aihao2" id="c2" onchange="showSelectRes(this,3);" />
+							<label for="c2">多拍、拍错、不想要</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="3" name="aihao2" id="c3" onchange="showSelectRes(this,3);" />
+							<label for="c3">不喜欢、效果不好</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="4" name="aihao2" id="c4" onchange="showSelectRes(this,3);" />
+							<label for="c4">尺寸、容器与商品描述不符</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="5" name="aihao2" id="c5" onchange="showSelectRes(this,3);" />
+							<label for="c5">颜色、款式与描述不符</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="6" name="aihao2" id="c6" onchange="showSelectRes(this,3);" />
+							<label for="c6">质量问题</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="7" name="aihao2" id="c7" onchange="showSelectRes(this,3);" />
+							<label for="c7">做工粗糙、有瑕疵</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="8" name="aihao2" id="c8" onchange="showSelectRes(this,3);" />
+							<label for="c8">收到商品少件、破损或污渍</label>
+						</div>
+					</div>
+					<div class="refundonlyshow-list">
+						<div class="hui-form-radios">
+							<input type="radio" value="9" name="aihao2" id="c9" onchange="showSelectRes(this,3);" />
+							<label for="c9">卖家发错货</label>
+						</div>
+					</div>
+				</div>
+				<div class="refundonlyguanbi" onclick="guanbi(3)">
+					关闭
+				</div>
+			</div>
+		</div>
+		</div> <script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../script/refundonly.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#list-one").click(function() {
+				$(".refundonly-Bullet").toggleClass("refundonly-Bullet-on")
+			});
+		
+
+			$("#list-two").click(function() {
+				$(".refundonly-Bullet-two").toggleClass("refundonly-Bullet-two-on")
+			});
+
+			$("#list-three").click(function() {
+				$(".refundonly-Bullet-three").toggleClass("refundonly-Bullet-three-on")
+			});
+			function guanbi(val) {
+				switch(val) {
+					case(1):
+						$(".refundonly-Bullet").removeClass("refundonly-Bullet-on")
+						break;
+					case(2):
+						$(".refundonly-Bullet-two").removeClass("refundonly-Bullet-two-on")
+						break;
+					case(3):
+						$(".refundonly-Bullet-three").removeClass("refundonly-Bullet-three-on")
+						break;
+				}
+			}
+
+			//
+		</script>
+		<script type="text/javascript">
+			hui.formInit();
+			//表单元素数据收集演示
+			hui('#submitBtn').click(function() {
+				var data = hui.getFormData('#form1');
+				console.log(JSON.stringify(data));
+			});
+			//获取单选框的值
+			function showSelectRes(_selfBtn, type) {
+				var val;
+				hui(_selfBtn).parent().find('input').each(function(cObj) {
+					if (cObj.checked) {
+						val = cObj.value;
+						var label = $(_selfBtn).parent().find('label').html()
+						switch(type) {
+							case 1:
+								$("#type1").html(label);
+								guanbi(1)
+								//申请类型
+								var serviceType = val;
+								break;
+							case 2:
+								$("#type2").html(label);
+								guanbi(2)
+								//收货状态
+								var receiveStatus = val;
+								break;
+							case 3:
+								$("#type3").html(label);
+								guanbi(3)
+								//退货原因字符串
+								var reason = label;
+								
+								break;
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

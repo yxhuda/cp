@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>确认订单</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<style type="text/css">
+			.with-time {
+			text-align: center;
+			color: #999;
+			margin: 10px 0;
+		}
+		.with-img-right {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: 10px;
+			float: right;
+		}
+		.with-img-right img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.with-img {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-right: 10px;
+			float: left;
+		}
+		.with-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.content-box {
+			padding: 0 10px;
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+		.with-left {
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		.with-right {
+			overflow: hidden;
+			float: right;
+			margin-bottom: 20px;
+		}
+		.with-text {
+			background: #fff;
+			padding: 10px;
+			border-radius: 3px;
+			font-size: 15px;
+			float: left;
+			max-width: 60%;
+			margin-top: 2px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-right: 15px;
+			word-break: break-all;
+			word-wrap: break-word;
+			margin-left: 5px;
+			display: flex;
+   		    flex-wrap: wrap;
+		}
+		.noborders {
+			padding: 0 !important;
+			margin: 0 5px
+		}
+		.with-text:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			left: -10px;
+			top: 13px;
+			border-top: 7px solid transparent;
+			border-right: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.with-text-right {
+			background: #ffeb3b;
+			padding: 8px 10px;
+			border-radius: 3px;
+			font-size: 16px;
+			float: right;
+			max-width: 65%;
+			color: #333;
+			line-height: 20px;
+			margin-top: 3px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-right: 5px;
+			word-break: break-all;
+			word-wrap: break-word;
+			display: flex;
+   		    flex-wrap: wrap;
+		}
+		.with-text-right:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			right: -10px;
+			top: 9px;
+			border-top: 7px solid transparent;
+			border-left: 10px solid #ffeb3b;
+			border-bottom: 7px solid transparent;
+		}
+		.with-bottom {
+			width: 100%;
+			bottom: 0;
+			position: fixed;
+			left: 0;
+			background: #fff;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 10px;
+		}
+		.with-input {
+			width: 85%;
+			margin-right: 5px;
+		}
+		.with-input input {
+			width: 100%;
+			line-height: 30px;
+			border-radius: 30px;
+			text-indent: 1em;
+		}
+		.with-icon {
+			width: 8%;
+			text-align: center;
+			border: 1px solid #333;
+			border-radius: 50%;
+		}
+		.with-icon i {
+			font-size: 12px;
+		}
+		.with-icon {
+			transform: rotate(45deg);
+		}
+		.vo-text-left {
+			height: 36px;
+			min-width: 50px;
+			background: #fff;
+			border-radius: 3px;
+			line-height: 30px;
+			max-width: 200px;
+			display: flex;
+			align-items: center;
+			padding: 0 10px;
+			position: relative;
+		}
+		.vo-text-left img {
+			width: 20px;
+			height: 20px
+		}
+		.vo-text-left:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			left: -10px;
+			top: 13px;
+			border-top: 7px solid transparent;
+			border-right: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.vo-text-right {
+			height: 36px;
+			min-width: 50px;
+			background: #fff;
+			border-radius: 3px;
+			line-height: 30px;
+			max-width: 120px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding: 0 10px;
+			position: relative;
+			margin-right: 5px;
+			margin-top: 3px;
+		}
+		.vo-text-right:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			right: -10px;
+			top: 9px;
+			border-top: 7px solid transparent;
+			border-left: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.vo-text-right img {
+			width: 20px;
+			height: 20px
+		}
+		.vo-left {
+			float: left;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-start;
+		}
+		.vo-right {
+			float: right;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.with-img-right {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: 10px;
+			float: right;
+			
+		}
+		.new {
+			background: #fff;
+			padding: 5px;
+			width: 70%;
+			border-radius: 5px;
+			flex:1;
+			position:relative;
+			margin-right:15px;
+		}
+		.new:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			right: -10px;
+			top: 13px;
+			border-top: 7px solid transparent;
+			border-left: 10px solid #fff;
+			border-bottom: 7px solid transparent;
+		}
+		.new-top {
+			display: flex;
+			justify-content: flex-start;
+			padding: 5px;
+			border-bottom: 1px solid #f5f5f5
+		}
+		.newimg {
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+		}
+		.newimg img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.new-titme {
+			width: 67%;
+			margin-left: 3%;
+		}
+		.new-title {
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			line-height: 16px;
+			font-weight: 600
+		}
+		.new-red {
+			color: red;
+			font-size: 12px;
+			margin-top: 10px
+		}
+		.newes {
+			margin-left:10px !important;
+		}
+		.newes:before {
+			transform: rotateY(180deg);
+			left:-10px !important
+		}
+		.numberNew {
+			font-size: 12px;
+			color: #999;
+			margin-top: 5px;
+		}
+		.numberNew span {
+			font-size: 12px;
+			color: #999
+		}
+		.dingnewnew {
+			background: #fff;
+			padding: 5px;
+			border-radius: 5px;
+			margin: 10px
+		}
+		.dingnewnew-top {
+			display: flex;
+			justify-content: flex-start;
+			padding: 5px;
+			border-bottom: 1px solid #f5f5f5
+		}
+		.dingnewnewimgs {
+			width: 80px;
+			height: 80px;
+			overflow: hidden;
+		}
+		.dingnewnewimgs img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.dingnewnew-title-box {
+			width: 76%;
+			padding: 0 10px
+		}
+		.dingnewnew-title {
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			line-height: 16px;
+			font-weight: 600;
+			margin-left: 2%;
+			flex:1
+		}
+		.dingnewnew-red {
+			color: red;
+			font-size: 12px;
+			margin-top: 10px
+		}
+		.dingnewnumberNew {
+			font-size: 12px;
+			color: #999;
+			margin-top: 5px;
+		}
+		.dingnewnumberNew span {
+			font-size: 12px;
+			color: #999
+		}
+		.dingls {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 18px;
+		}
+		.dingl-left span:nth-child(1) {
+			color: red;
+			font-size: 12px
+		}
+		.dingl-left span:nth-child(2) {
+			color: red;
+			font-size: 18px;
+			margin: 0 3px
+		}
+		.dingl-left span:nth-child(3) {
+			color: #999;
+			font-size: 12px
+		}
+		.ding-buttons button {
+			background: #fff;
+			border: 1px solid red;
+			padding: 3px 5px;
+			border-radius: 3px;
+			color: red;
+		}
+		.dingtext {
+			display: flex;
+			justify-content: center;
+			padding: 5px
+		}
+		.dingtext-test {
+			margin-right: 10px;
+			color: #999;
+			font-size: 12px;
+			margin: 0 5%
+		}
+		.consulting {
+			float: right;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.consultingbox {
+			background: #fff;
+			padding: 5px;
+			width: 55%;
+			border-radius: 5px
+		}
+		.consultingbox-img {
+			width: 100%;
+			height: 200px
+		}
+		.consultingbox img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.consulting-title {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			overflow: hidden;
+		}
+		.consulting-text {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.consultingText-color {
+			color: #999
+		}
+		.consultingText span:nth-child(1) {
+			font-size: 12px;
+			color: red
+		}
+		.consultingText span:nth-child(2) {
+			font-size: 14px;
+			color: red;
+		}
+		.consultings {
+			float: left;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-start;
+			margin: 10px 0
+		}
+	</style>
+	<body>
+		<div class="" name="chatcontent" id='chatcontent' style="padding-bottom:10px;    overflow: hidden;">
+			
+		</div>
+		<div id='blank'></div>
+		<div id='bar'></div>
+		<div id="gif" class="svger" style="display:none;top: 20%;left: 10%;position: fixed;">
+			<i><img src="../img/2.gif" style="border-radius:15px"  width=200 height=200 /></i>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/shopchat.js"></script>
+		<!--数量加减-->
+		<script type="text/javascript">
+			//一句话即可完成js工作
+			hui.numberBox();
+				
+		</script>
+	</body>
+</html>

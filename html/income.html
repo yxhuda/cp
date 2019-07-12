@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>累计收益</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+	<style type="text/css">
+		.income {
+			background: #f76800;
+			padding: 40px 10px 40px 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.incomelist {
+			background: #fff;
+			width: 40%;
+			border-radius: 5px;
+			padding: 15px 0;
+			text-align: center;
+			margin: 0 2%;
+			box-shadow: 3px 2px 7px #f76800;
+		}
+		.incomelist p:nth-child(1) {
+			font-size: 18px;
+			margin-bottom: 5px;
+		}
+		.incomelist p:nth-child(2) {
+			color: #ff5d5d;
+		}
+		.incomelist i {
+			line-height: 20px;
+			font-size: 22px;
+			color: #999;
+			margin-bottom: 5px;
+		}
+		.accumulation {
+			background: #007AFF;
+			padding: 20px;
+		}
+		.accumulation button {
+			background: #007AFF;
+			margin: auto;
+			display: table;
+			padding: 8px 10px;
+			width: 40%;
+			border: 1px solid #fff;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 16px;
+		}
+		.incomebox {
+			background: #fff;
+			display: flex;
+			justify-content: flex-start;
+			padding: 10px;
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.income-type {
+			font-size: 16px;
+			margin-right: 30px;
+		}
+		.income-type i {
+			line-height: 0;
+			font-size: 12px;
+			margin-left: 5px;
+		}
+		.income-time {
+			font-size: 16px;
+			position: relative;
+		}
+		.income-time i {
+			line-height: 0;
+			font-size: 12px;
+			margin-left: 5px;
+		}
+		.typeboxlist {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+			background: #fff;
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.typeboxlist1 {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+			background: #fff;
+			border-bottom: 1px solid #f5f5f5;
+		}
+		.typeboxlist-l {
+			width: 55px;
+			height: 55px;
+		}
+		.typeboxlist-l img {
+			width:55px;
+			height:55px;
+			border-radius: 50%;
+		}
+		.typeboxlist-ls {
+			background: #008AFF;
+			width: 50px;
+			height: 50px;
+			color: #fff;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 50px;
+		}
+		.typeboxlist-z {
+			color: #333;
+			font-weight:600;
+			flex:1;
+			margin-left:15px
+		}
+		.typeboxlist-r p:nth-child(1) {
+			margin-top:9px;
+		}
+		.typeboxlist-r p:nth-child(2) {
+			color: #999;
+		}
+		.income-time input {
+			margin-top: 20px;
+			position: absolute;
+			left: 0;
+			top: -30px;
+			opacity: 10;
+			padding: 0px;
+			width: 115px;
+			outline: none;
+			border: 1px solid #fff;
+			background: #fff;
+			height: 37px;
+			line-height: 37px;
+			box-shadow: 0 0 1px #fff !important;
+		}
+		#dateSelect::-webkit-input-placeholder {
+			/* placeholder颜色  */
+			color: #0e0e0e;
+			/* placeholder字体大小  */
+			font-size: 16px;
+			/* placeholder位置  */
+			/*text-align: right;*/
+		}
+		.incomes {
+			position: absolute;
+			top: 21%;
+			overflow-y: scroll;
+			width: 100%;
+			z-index: 0
+		}
+		@media only screen and (width: 375px) {
+			.incomes {
+				top: 24%;
+			}
+		}
+		@media only screen and (min-device-height: 812px) {
+			.incomes {
+				top: 22%;
+			}
+		}
+		@media only screen and (width: 360px) {
+			.incomes {
+				top: 25%;
+			}
+		}
+	</style>
+	<body>
+		<!--<header>
+		<div class="bank">
+		<i class="icon iconfont iconright"></i>
+		</div>
+		<h1>累计收益</h1>
+		</header>-->
+		<div class="content" style="margin-top:-45px;">
+			<div class="borderlink"></div>
+			<div style="position: fixed;width: 100%;height:30%;z-index: 20">
+				<div class="income">
+					<div class="incomelist">
+						<p>
+							可提现金额
+						</p>
+						<p style="font-size: 15px;margin-bottom: 0;">
+							￥<span style="color: red;" id="allmoney">500</span>
+						</p>
+					</div>
+					<div class="incomelist" tapmode="" onclick="withdrawal()">
+						<p>
+							提现
+						</p>
+						<img src="../img/wallet.png" style="width: 17px" ></i>
+					</div>
+				</div>
+			</div>
+			<div class="income-typebox incomes" id="incomes">
+				<!--<div class="typeboxlist">
+					<div class="typeboxlist-l">
+						<img src="../img/mrt.png">
+					</div>
+					<div class="typeboxlist-z">
+						超拼自营店
+					</div>
+					<div class="typeboxlist-r">
+						<p>
+							收入金额
+						</p>
+						<p>
+							+￥50
+						</p>
+					</div>
+				</div>-->
+				
+				
+				
+			</div>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/income.js"></script>
+		<!--<script type="text/javascript">
+		/* 修正 datepicker 样式 */
+		hui.datePicker();
+		</script>-->
+		<!--<script type="text/javascript">
+		</script>-->
+		<!--<script type="text/javascript">
+		var meuns = ['收入', '提现'];
+		var cancel = '取消';
+		hui('#income').click(function() {
+		hui.actionSheet(meuns, cancel, function(e) {
+		if (e.index == 0) {
+		$('.typeboxlist').show();
+		$('.typeboxlist1').hide();
+		} else {
+		$('.typeboxlist').hide();
+		$('.typeboxlist1').show();
+		}
+		//					hui.toast(e.innerHTML);
+		});
+		});
+		</script>-->
+	</body>
+</html>

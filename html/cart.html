@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+
+	<body class="">
+		
+			<div class="cartempty-box" id='cartEmpty' style='display:none'>
+				<div class="cartempty">
+					<img src="../img/cartempty1.png" />
+				</div>
+				<div class="cartempty-text">
+					<p>购物车还是空的呦~！</p>
+					<p>去挑选几件你中意的商品吧！</p>
+				</div>
+			</div>
+			
+			<div id='cartList' >
+			
+			</div>
+			<div class="shopdetail-commodity" >
+				<img src="../img/cartempty.png" />
+			</div>
+			<div class="content-cartempty" id="activity" style="overflow: auto">
+			
+			</div>
+				</div>
+		<!--底部结算-->
+		
+		
+		<div class="cartempty-Settlement" id='calPanel' style='display:none;' >
+			<div class="cartemptySettlement-left">
+				<div class="zp-radios">
+					<input type="checkbox" name="checkAll"  disabled tapmode="" id="checkAll" class='allCheck' /><label tapmode="" onclick="checkProduct(0,'')" for="checkAll">全选</label>
+				</div>
+			</div>
+			<div class="cartemptySettlement">
+				<span>合计：</span><span id='totalPrice'>￥ 0.00</span>
+			</div>
+			<div class="bottomPayment-right" onclick='submitCart()'>
+				立即支付
+			</div>
+		</div>
+		
+		<div class="cartempty-Settlement" id='opPanel' style='display:none;'>
+			<div class="cartemptySettlement-left">
+				<div class="zp-radios">
+					<input type="checkbox"  disabled tapmode="" id="editcheckAll" class='allCheck2' /><label tapmode=""   onclick="checkEditProduct(0,'')"></label>全选
+				</div>
+			</div>
+			<div class="cartemptySettlement">
+				
+			</div>
+			<div class="bottomPayment-right" onclick='delCart()'>
+				删除所选
+			</div>
+		</div>
+		
+		
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/cart.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的评价</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<body>
+		<div id="vue-example">
+			<div class="">
+				<div v-for="(item, index) in products" class="">
+					<div   class="borderlink"></div>
+					<div class="evaluate">
+						<div class="evaluateimg">
+							<img :src="item.img" />
+						</div>
+						<div class="evaluate-title">
+							<p>
+								{{item.productName}}
+							</p>
+							<p v-if="item.spec_desc">
+								规格：{{item.spec_desc}}
+							</p>
+						</div>
+					</div>
+					<div class="borderlink"></div>
+					<div class="evaluatebox">
+						<div v-for="(lable,i) in item.lable" :class="[lable.isShow?'evaluate-list-on':'evaluate-list']" @click="selectLable(lable.id,i,index)">
+							<p>{{lable.name}}</p>
+						</div>
+					</div>
+					<div class="height"></div>
+					<div class="star">
+						<div class="star-list">
+							<div class="star-left">
+								描述相符
+							</div>
+							<div :id="'star1'+index"></div>
+						</div>
+						<div class="star-list">
+							<div class="star-left">
+								物流服务
+							</div>
+							<div :id="'star2'+index"></div>
+						</div>
+						<div class="star-list">
+							<div class="star-left">
+								服务态度
+							</div>
+							<div :id="'star3'+index"></div>
+						</div>
+					</div>
+					<div class="height"></div>
+					<div class="feedback">
+						<textarea  v-model="item.content" id="textarea" name="" rows="5" cols="" maxlength="200" placeholder="亲，您对这个商品满意吗？您的评价会帮助我们选择更好的商品哦"></textarea>
+						
+						<div class="feedbackimg">
+							<template v-for="(url,imgIndex) in item.imgList">
+								<div   class="ls" id="img_list">
+									<i class="icon iconfont iconguanbi" style="background-color: #dedede;position:relative;left:-20px;font-size: 12px;padding:2px 3px;color: #fff;border-radius: 50%;" @click="delImg(index,imgIndex)"></i>
+									<img :src="url">
+								</div>
+							</template>
+							<div class="feedback-img" tapmode="" @click="uploadPhoto(index)">
+								<div  class="refundonly-r" id="totalNumber">
+									{{item.imgList?item.imgList.length:0}}/3
+								</div>
+							</div>
+						</div>
+						<!--<div class="feedbackimg">
+						<div class="ls" id="img_list">
+						</div>
+						<div class="feedback-img" tapmode="" onclick="uploadPhoto();">
+						<div class="refundonly-r" id="totalNumber">
+						0/3
+						</div>
+						</div>
+						</div>-->
+					</div>
+				</div>
+			</div>
+			<div class="button-bottom">
+				<button @click="setFeedback()">
+					提交评价
+				</button>
+			</div>
+		</div>
+		</div> <script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-star.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/evaluate.js"></script>
+		<script type="text/javascript">
+			$(".evaluate-list").click(function() {
+				$(this).toggleClass("evaluate-list-on")
+			})
+		</script>
+		<script type="text/javascript"></script>
+	</body>
+</html>

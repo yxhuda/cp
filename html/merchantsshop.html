@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>企业入驻</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+
+	<body class="bodyno" style="width: 100%;">
+		<!--<header>
+			<div class="bank">
+				<i class="icon iconfont iconright"></i>
+			</div>
+			<h1>企业入驻</h1>
+		</header>-->
+		<div class="content" style="padding-top:44px!important;padding-bottom:20px;width: 100%;">
+			<div class="personalshop-list">
+				<div class="personalshop-title">
+					店铺名称
+				</div>
+				<div class="personalshop-content">
+					<input type="text" name="shopName" id="shopName" value="" placeholder="请输入店铺名称" tapmode='' onblur="message()"/>
+				</div>
+			</div>
+			<div class="personalshop-listnew">
+				<div class="listnew-title">
+					经营范围
+				</div>
+				<div class="listnew-content">
+					<textarea name="shopBusiness" id="shopBusiness" rows="5" cols=""placeholder="请填写经营范围"></textarea>
+				</div>
+			</div>
+			<div class="personalshop-list">
+				<div class="personalshop-title">
+					店铺联系人
+				</div>
+				<div class="personalshop-content">
+					<input type="text" name="shopContact" id="shopContact" value="" placeholder="请输入店铺联系人"/>
+				</div>
+			</div>
+			<div class="personalshop-list">
+				<div class="personalshop-title">
+					联系电话
+				</div>
+				<div class="personalshop-content">
+					<input type="tel" name="shopContactphone" id="shopContactphone" value="" placeholder="请输入联系电话"/>
+				</div>
+			</div>
+			<!--<div class="personalshop-list">
+				<div class="personalshop-title">
+					电子邮箱
+				</div>
+				<div class="personalshop-content">
+					<input type="email" name="shopEmail" id="shopEmail" value="" placeholder="请输入电子邮箱"/>
+				</div>
+			</div>-->
+			<div class="personalshop-list">
+				<div class="personalshop-title">
+					身份证号
+				</div>
+				<div class="personalshop-content">
+					<input type="text" name="shopIdcard" id="shopIdcard" style="width:120%" value="" placeholder="请输入身份证号"/>
+				</div>
+			</div>
+			<div class="personalshop-list"  tapmode="" onclick="show()">
+				<div class="personalshop-title">
+					运营分类
+				</div>
+				<div class="personalshop-content"> 
+					<input type="text" readonly="readonly" name="shopClass" id="shopClass" value="" placeholder="请选择商家分类"/>
+				</div>
+			</div>
+			<div class="personalshop-listnew">
+				<div class="listnew-title">
+					营业执照
+				</div>
+				<div class="listnew-content">
+					<div class="card-positive" name="shopBusinesslicense" id="shopBusinesslicense" tapmode="" onclick="uploadPhoto('idpic1')">
+						<img src="../img/enterprise.png"id='idpic1' style="width: 90%;height: 350px;"/>
+					</div>
+					<p>上传营业执照</p>
+				</div>
+			</div>
+			
+			<div id="classHtml">
+			
+			</div>
+			<div class="bottom-button marginTop30" tapmode="" onclick="setFeedback();">
+				<button>提交</button>  
+			</div>
+		</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/merchantsshop.js"></script>
+		
+	</body>
+
+</html>

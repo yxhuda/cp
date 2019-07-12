@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>店铺优选</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+
+	<body>
+		
+		<div>
+			<div class="searchgoods">
+				<div class="searchgoods-list searchgoods-list-on" id='product' onclick="clickPanelTab('product')" tapmode=''>商品</div>
+				<div class="searchgoods-list" id='shop' onclick="clickPanelTab('shop')" tapmode=''>店铺</div>
+			</div>
+			<div class="activity-navs">
+				<div class="activityNav-title activity-navshow" id='pfilter1' tapmode='' onclick="searchGoods(1)">
+					综合排行
+				</div>
+				<div class="activityNav-title" id='pfilter2' tapmode='' onclick="searchGoods(2)">
+					销量优先
+				</div>
+				<div class="activityNav-title" id='pfilter3' tapmode='' onclick="searchGoods(3)">
+					价格
+				</div>
+				<span class="triangle" onclick="searchGoods(3)">
+				<span class="dup"></span>
+				<span class="ddown"></span>
+				</span>
+			</div>
+			<div class="searchgoods-body">
+			
+				<div class="body-table body-table-on" id='productPanel'>
+					<div id="activitys">
+					
+					
+					</div>
+				</div>
+				<div class="body-table" id='shopPanel'>
+					<div class="searchgoods-content">
+						<div class="activity-navs">
+							<div class="activityNav-title shopfilter activity-navshow" id='sfilter1' tapmode='' onclick="searchShop(1)">
+								综合排行
+							</div>
+							<div class="activityNav-title shopfilter" id='sfilter2' tapmode='' onclick="searchShop(2)">
+								销量优先
+							</div>
+						</div>
+						
+						<div id='shops'>
+						
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/searchgoods.js"></script>
+		
+	</body>
+	<style>
+	.triangle{
+	position:relative;
+	}
+	.dup{
+	position:absolute;
+	top:-7px;
+	left: -30px;
+ width: 0; 
+ height: 0;
+ border-left:3px solid transparent;
+border-right:3px solid transparent;
+border-bottom:6px solid black;
+}
+	.dup1{
+	position:absolute;
+	top:-7px;
+	left: -30px;
+ width: 0; 
+ height: 0;
+ border-left:3px solid transparent;
+border-right:3px solid transparent;
+border-bottom:6px solid red;
+}
+.ddown{
+position:absolute;
+	top:3px;
+	left: -30px;
+ /*float: left;*/
+ width: 0; 
+ height: 0;
+ border-left:3px solid transparent;
+border-right:3px solid transparent;
+border-top:6px solid black;
+}
+.ddown1{
+position:absolute;
+	top:3px;
+	left: -30px;
+ /*float: left;*/
+ width: 0; 
+ height: 0;
+ border-left:3px solid transparent;
+border-right:3px solid transparent;
+border-top:6px solid red;
+}
+	</style>
+</html>

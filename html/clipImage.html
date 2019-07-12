@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>图片裁剪</title>
+		<!-- 在IOS设备上，有时会将数字转为手机号，这里也要禁止下 -->
+		<meta name="format-detection" content="telephone=no"/>
+		<style>
+			html, body {
+				/*background-color: transparent;
+				 background: rgba(0,0,0,0);*/
+			}
+			#foot_div {
+				display: block;
+				bottom: 0px;
+				padding-left: 20px;
+				padding-right: 20px;
+				/*right: 18px;*/
+				left: 0%;
+				min-width: 200px;
+				line-height: 45px;
+				width: 100%;
+				position: fixed;
+				/*border: 1px solid #fff;*/
+				text-align: center;
+				color: #fff;
+				background: #000;
+			}
+			#foot_div span {
+				display: block;
+			}
+			#foot_div span i {
+				font-size: 16px;
+			}
+			#foot_div span i.aui-pull-left {
+				float: left !important;
+				margin-left: 3% !important;
+			}
+			#foot_div span i.aui-pull-right {
+				float: right !important;
+				margin-right: 14% !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="foot_div">
+			<!--<div id="container" class="aui-button-row">-->
+			<span> <i class="aui-pull-left" onclick="back();">取消</i> <i onclick="resetImageClip();">重置</i> <i onclick="saveImageClip();" class="aui-pull-right">选取</i> </span>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js" ></script>
+	<script type="text/javascript">
+		var FNImageClip;
+		var img_src, winName, frameName;
+		apiready = function() {
+			img_src = api.pageParam.img_src;
+			winName = api.pageParam.winName;
+			frameName = api.pageParam.frameName;
+			FNImageClip = api.require('FNImageClip');
+			openImageClip(img_src);
+			//安卓关闭
+			if (api.systemType == 'android') {
+				backForAndroid();
+			}
+		};
+		/**
+		 * 对头像进行裁剪
+		 *
+		 * 2016.5.21
+		 */
+		function openImageClip(img_src) {
+			var rect_w = api.winWidth;
+			var rect_h = api.winHeight;
+			var clip_w = parseInt(rect_w - 2);
+			var clip_y = parseInt((rect_h - clip_w - 30) / 2);
+			FNImageClip.open({
+				rect : {
+					x : 0,
+					y : 0,
+					w : rect_w,
+					h : rect_h - 30
+				},
+				srcPath : img_src,
+				style : {
+					//（可选项）字符串类型；图片裁剪控件遮罩层背景，支持 rgb，rgba，#；默认：#888
+					mask : '#000',
+					clip : {
+						//（可选项）数字类型；裁剪区域的宽度，当 appearance 为 circular 时，w 为半径；默认：rect.w / 2
+						w : 150,
+						//（可选项）数字类型；裁剪区域的高度，当 appearance 为 circular 时，h 无效；默认：w
+						h : 150,
+						x : (api.winWidth - 300) / 2,
+						y : (api.winHeight - 350) / 2,
+						borderColor : '#0f0',
+						borderWidth : 1,
+						//（可选项）字符串类型；裁剪区域的形状，支持 circular | rectangle；默认：rectangle
+						appearance : 'circular'
+					}
+				},
+				mode : 'image',
+				fixedOn : api.frameName
+			}, function(ret, err) {
+			});
+		}
+
+		/**
+		 * 安卓点击返回的时候
+		 *
+		 * 2015.10.14
+		 */
+		function backForAndroid() {
+			api.addEventListener({
+				name : "keyback"
+			}, function(ret, err) {
+				back();
+			});
+		}
+
+		function back() {
+			closeImageClip();
+			api.closeFrame({
+				name : 'clipImage'
+			});
+		}
+
+		/**
+		 * 关闭裁剪组件
+		 *
+		 * 2016.5.21
+		 */
+		function closeImageClip() {
+			FNImageClip.close();
+		}
+
+		/**
+		 * 重置裁剪组件
+		 *
+		 * 2016.5.21
+		 */
+		function resetImageClip() {
+			FNImageClip.reset();
+		}
+
+		/**
+		 * 保存裁剪组件
+		 * 周枫
+		 * 2016.5.21
+		 */
+		function saveImageClip() {
+			FNImageClip.save({
+				destPath : img_src,
+				copyToAlbum : false,
+				quality : 1
+			}, function(ret, err) {
+				if (err) {
+					api.toast({
+						msg : '服务器繁忙，请稍后再试'
+					});
+				} else {
+					api.execScript({
+						script : 'uploadPic("' + ret.destPath + '");',
+						name : winName,
+						frameName : frameName
+					});
+					api.closeFrame({
+						name : 'clipImage'
+					});
+				}
+			});
+		}
+	</script>
+</html>

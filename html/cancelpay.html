@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>取消付款</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+
+	<body>
+		
+		<div class="">
+			<div class="borderlink"></div>
+			<div class="confirmorder">
+				<div class="confirmorder-Positioning">
+					<i class="icon iconfont iconlocation"></i>
+				</div>
+				<div class="confirmorder-address center ">
+					<div class="confirmorder-top">
+						<span>miss</span><span>15686207825</span>
+					</div>
+					<div class="confirmorder-bottom">
+						陕西省&nbsp;西安市&nbsp;雁塔区&nbsp;稀释家园小区
+					</div>
+				</div>
+				<div class="confirmorder-right">
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="confirmorder-list">
+				<div class="Shop-title">
+					<div class="Shop-left">
+						<div class="Shop-img">
+							<img src="img/Shop.jpg" />
+						</div>
+						<div class="Shop-text">
+							<p>迪卡服饰专卖店</p>
+							<p>DIKAFUSHI</p>
+						</div>
+					</div>
+				</div>
+				<div class="confirmorderBox">
+					<div class="confirmorderBox-img">
+						<img src="img/activity/activity3.jpg" />
+					</div>
+					<div class="confirmorderBox-text">
+						<div class="confirmorderBox-title">
+							大码裤子羞赧男女韩版大码裤子羞赧男女韩版大码裤子羞赧男女韩版
+						</div>
+						<div class="confirmorderBox-name">
+							规格：颜色877黑色 尺码3xl
+						</div>
+						<div class="confirmorderBox-price">
+							￥49.9
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="quantity">
+				<div class="quantity-title">
+					购买数量
+				</div>
+				<div class="quantity-box">
+					<div class="hui-wrap">
+						<div class="hui-number-box" min="1" max="3">
+							<div class="reduce">-</div>
+							<input type="number" value="1" />
+							<div class="add">+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="paymentMethod">
+				<div class="payment-method">
+					<div class="weixin"></div>
+					<div class="payment-method-text center">
+						微信支付
+					</div>
+					<div class="hui-form-radios">
+						<input type="radio" value="1" name="gender" id="g1" checked="checked" onchange="showSelectRes(this);" /><label for="g1"></label><br />
+					</div>
+				</div>
+				<div class="payment-method">
+					<div class="zhifubao"></div>
+					<div class="payment-method-text center">
+						微信支付
+					</div>
+					<div class="hui-form-radios">
+						<input type="radio" value="1" name="gender" id="g2" checked="checked" onchange="showSelectRes(this);" /><label for="g1"></label><br />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottomPayment">
+			<div class="bottomPayment-left">
+				<span>合计：</span><span>￥48.9</span>
+			</div>
+			<div class="bottomPayment-right" id="bottomPaymentBullet">
+				立即支付
+			</div>
+		</div>
+		<!--服务说明弹框-->
+		<div class="bottomPaymentBullet ">
+			<div class="CouponBulletin">
+				<div class="CouponBulletin-title" tapmode="" onclick="closePay();">
+					<input type="hidden" class="timehide" id="orderTime" value="">请在<span class="timetick">00：00：00</span>内支付 <i class="icon iconfont iconguanbi bottomPaymentleft"></i>
+				</div>
+				<div class="borderlinks"></div>
+				<div class="confirmorder paddingMagin" tapmode="" onclick="goAddress();">
+					<div class="confirmorder-Positioning">
+						<i class="icon iconfont iconlocation"></i>
+					</div>
+					<div class="confirmorder-address center ">
+						<div class="confirmorder-bottom" id="orderAddress">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+					</div>
+					<div class="confirmorder-right">
+						<i class="icon iconfont iconarrow-left"></i>
+					</div>
+				</div>
+				<div class="borderlinks"></div>
+				<div class="paymentMethod">
+					<div class="hui-form-radios">
+						<div class="payment-method">
+							<div class="weixin"></div>
+							<div class="payment-method-text center">
+								微信支付
+							</div>
+							<input type="radio" id="g1" value="1" name="payType" checked="checked" onchange="showSelectRes(this);" />
+							<label for="g1"></label>
+						</div>
+						<div class="payment-method">
+							<div class="zhifubao"></div>
+							<div class="payment-method-text center">
+								支付宝支付
+							</div>
+							<input type="radio" value="2" name="payType" id="g2" onchange="showSelectRes(this);" />
+							<label for="g2"></label>
+						</div>
+					</div>
+				</div>
+				<div class="bottom-button" tapmode="" onclick="payorder();">
+					继续支付<span id="absPrice">￥ 0.00</span>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/pay.js"></script>
+		<script type="text/javascript" src="../script/cart.js"></script>
+		<!--数量加减-->
+		<script type="text/javascript">
+			//一句话即可完成js工作
+			hui.numberBox();
+		</script>
+		<!--取消支付弹框-->
+		<script type="text/javascript">
+			hui('#BackBullet').click(function() {
+				hui.confirm('订单已生成，确定放弃付款吗？', ['暂时放弃', '继续支付'], function() {
+					console.log('确认后执行...');
+				}, function() {
+					console.log('取消后执行...');
+				});
+			});
+		</script>
+		<!--支付下弹框-->
+		<script type="text/javascript">
+			$(function() {
+				$("#bottomPaymentBullet").click(function() {
+					$(".bottomPaymentBullet").toggleClass("bottomPaymentBullets", 1000);
+					$(".body").toggleClass("bodys", 1000);
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

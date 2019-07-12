@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>HUI - 操作表</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+</head>
+<body>
+
+<div class="">
+
+   	<div class="personinfor-list" tapmode="" onclick='uploadPhoto()'>
+				<div class="personinfor-left">
+					头像
+				</div>
+				<div class="personinfor-right">
+					<div class="personinfor-img">
+						<img src="../img/verify03.png" id='header_pic'/>
+					</div>
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+</div>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+			
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+
+<script type="text/javascript">
+var meuns = ['拍照', '从相册中选择'];
+var cancel = '取消';
+function uploadPhoto(){
+	 hui.actionSheet(meuns, cancel, function(e){
+        console.log(e.index);
+        hui.toast(e.innerHTML);
+    });
+}
+//手册地址
+//http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.actionShe
+</script>
+</body>
+</html>

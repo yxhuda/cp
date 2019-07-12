@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>超拼网</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<style>
+
+		.maskshow {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+	z-index: 80;
+	left: 0;
+	top: 0;
+}
+.maskbox {
+	width:60%;
+	height:50%;
+	background: #fff;
+	border-radius: 10px;
+	position: fixed;
+	top: 20%;
+	left: 17%;
+	z-index: 99;
+	padding: 10px;
+	text-align:center;
+}
+.maskbox img{
+	margin-top:20px;
+	width:80px;
+	height:80px;
+}
+.maskbox button{
+	padding:5px;
+	width:50%;
+	height:35px;
+	border:none;
+	background:red;
+	border-radius: 10px;
+	color:#fff;
+}
+.maskI{
+	position: fixed;
+	top: 21%;
+	left:70%;
+	width:30px;
+	height:30px;
+	background:#dedede;
+	border-radius:50%;
+	z-index: 99;
+	text-align: center;
+}
+.maskI i{
+	font-size:12px;
+	line-height: 30px;
+	margin:auto;
+	color:#fff;
+	
+}
+	</style>
+	<body>
+	
+		<div style="height:500px">
+			<div class="borderlink"></div>
+			<div class="personinfor-list"  style="margin-bottom: 1px;" tapmode="" onclick="tenants();">
+				<div class="personinfor-left">
+					商家免费入驻
+				</div>
+				<div class="personinfor-right">
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="personinfor-list" tapmode="" onclick="openWinNew('question', '常见问题', {}, {},true);">
+				<div class="personinfor-left">
+					常见问题
+				</div>
+				<div class="personinfor-right">
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="borderlink"></div>
+			<div class="personinfor-list" tapmode="" onclick="openWinNew('feedbacktype', '意见反馈列表', {}, {},true);">
+				<div class="personinfor-left">
+					意见反馈
+				</div>
+				<div class="personinfor-right">
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="height"></div>
+			<div class="personinfor-list" tapmode="" onclick="clearCache();">
+				<div class="personinfor-left">
+					清除缓存
+				</div>
+				<div class="personinfor-right" >
+					<div class="personinfor-text" id='cachesize'>
+						0.00M
+					</div>
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="borderlink"></div>
+			<div class="personinfor-list" tapmode="" onclick="version();">
+				<div class="personinfor-left">
+					版本更新
+				</div>
+				<div class="personinfor-right">
+					<div class="personinfor-text">
+						发现新版本
+					</div>
+					<i class="icon iconfont iconarrow-left"></i>
+				</div>
+			</div>
+			<div class="personinfor-bottom">
+				<div class="button-bottom" tapmode="" onclick="loginOut();">
+					<button>退出登录</button>
+				</div>
+				<div class="personinfor-p" >
+					<p id="currentVersion">当前版本0.0.0</p>
+				<p tapmode="" onclick="openWinNew('agreementList', '协议与隐私', {}, {},true);">服务协议与隐私政策</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="maskshow" style="display: none"></div>
+		<div class="maskbox" style="display: none">
+			<div class="maskI" tapmode="" onclick="cancel();">
+				<i class="icon iconfont iconguanbi"></i>
+			</div>
+			<img src="../img/logo.png" />
+			<div style="height:50%;margin-top: 10%;">
+				<p style="font-size:16px;margin-bottom: 5px;">有新版本可升级</p>
+				<p style="color: red;margin-bottom: 16px;font-size: 14px;">90%的用户选择了升级</p>
+				<p style="text-align: left;margin-bottom: 8px;margin-left: 10px;">本次更新：</p>
+				<p style="text-align: left;margin-bottom: 8px;margin-left: 10px;">-优化了一些体验细节。</p>
+			</div>
+			<div style="position: relative;bottom:20px;"><button>立即升级</button></div>
+		</div>
+		
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../script/set.js"></script>
+	<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+	
+</html>

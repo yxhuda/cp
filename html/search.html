@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>店铺优选</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body>
+		<header id='header'>
+			<div class="bank" tapmode="" onclick="closeWin();">
+				<i class="icon iconfont iconright"></i>
+			</div>
+			<div class="bankinputs">
+				<form action="javascript:searchList();">
+					<input type="search"  id="search" value="" placeholder="点击搜索关键字" />
+				</form>
+			</div>
+			<div class="hui-header-sreach-txt" tapmode="" onclick="searchList();">
+				搜索
+			</div>
+		</header>
+		<div class="content">
+			<div class="hui-hot-sreach">
+				<div class="hui-hot-sreach-title">
+					<div class="hui-hot-sreach-title searchtitle">
+						热搜
+					</div>
+				</div>
+				<div class="hui-hot-sreach-keys" id='hotsearch'></div>
+				<div id='historyPanel' class="hui-hot-sreach-title">
+					<div class="search-title">
+						历史
+					</div>
+					<div class="seach" tapmode='' onclick='clearHistory()'>
+						<i class="icon iconfont iconshanchu"></i>
+					</div>
+				</div>
+				<div class="hui-hot-sreach-keys backcolor borderNo" id='history'></div>
+			</div>
+		</div>
+		<script src="../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/search.js"></script>
+	</body>
+</html>

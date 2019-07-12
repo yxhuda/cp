@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+
+	<body>
+		<header class="cartempty-back">
+			<div class="bank">
+				<i class="icon iconfont iconright"></i>
+			</div>
+			<h1>购物车</h1>
+		</header>
+		<div class="content">
+			<div class="cartempty-box">
+				<div class="cartempty">
+					<img src="../img/cartempty1.png" />
+				</div>
+				<div class="cartempty-text">
+					<p>购物车还是空的呦~！</p>
+					<p>去挑选几件你中意的商品吧！</p>
+				</div>
+			</div>
+			<div class="shopdetail-commodity">
+				<img src="../img/cartempty.png" />
+			</div>
+			<div class="content-cartempty" id="activity"></div>
+		</div>
+		<script src="js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hui-water-fall.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hui-refresh-load-more.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hui-swipe.js" type="text/javascript" charset="utf-8"></script>
+		<!--顶部导航-->
+		<script type="text/javascript">
+			hui('#TopNavigation').scrollX(5, '.NavText');
+		</script>
+		<script type="text/javascript">
+			//第一步 初始化瀑布流dom布局
+			var Waterfall = new huiWaterfall('#activity');
+			/*
+			 * 第二步 使用waterfall对象的 addItems()函数为瀑布流增加内容 
+			 * 一般情况下瀑布流内的内容会通过远程服务器获取，hui支持的瀑布流内容格式为：
+			 * <div class="hui-water-items">
+			 *     <a herf="hui.toast('您的链接');">
+			 *         <div><img src="图片地址" /></div>
+			 *         <div class="hui-water-items-text">文本</div>
+			 *     </a>
+			 * </div>
+			 * 后端服务器重复输出以上dom结构内容即可，支持使用上拉加载更多，加载后再次调用addItems()函数即可。
+			 * 以下是一个模拟的例子
+			 */
+			var data = new Array();
+			for(var i = 1; i <= 6; i++) {
+				data.push({
+					img: 'img/activity/activity' + i + '.jpg',
+					title: '项目标题'
+				});
+			}
+			var page = 1;
+			getList();
+			//模拟远程获取数据 随机对数据进行排序
+			function getList() {
+				data.shuffle(); //随机对数据进行排序
+				//组合dom
+				var str = '';
+				for(var i = 0; i < data.length; i++) {
+					str += '<div class="activity-lists hui-water-items"><div class="activity-imgs"><img src="' + data[i].img + '" /></div><div class="activity-box"><div class="activity-title">京东生鲜 新疆库尔勒香梨 精选特级 净重2.5kg 新鲜水果</div><div class="activity-text"><div class="activity-left">￥18.84</div><div class="activity-right">已拼1.5万件</div></div></div></div>';
+				}
+				Waterfall.addItems(str);
+				if(page >= 2) {
+					hui.endLoadMore(true);
+				} else {
+					hui.endLoadMore();
+				}
+				page++;
+			}
+			hui.loadMore(getList);
+		</script>
+	</body>
+
+</html>

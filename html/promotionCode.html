@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>推广二维码</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../font_1066928_lk62vri0qvc/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+	<style type="text/css">
+		html{
+			height: 100%
+		}
+		.promotionCode {
+			background: url(../img/promotionCode.jpg) no-repeat;
+			background-size: 100% 100%;
+			width:100%;
+			height:100%;
+			position: fixed
+		}
+		
+		.Code-box {
+			margin-top: 15%;
+			display: flex;
+			justify-content: center
+		}
+		
+		.Codeimg {
+			width: 80px;
+			height: 80px;
+			overflow: hidden;
+			border-radius: 50%;
+			margin-left: 20px;
+		}
+		
+		.Codeimg img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+		.Codetext {
+			color: #fff;
+			font-size: 16px;
+			margin-top: 10px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 120px;
+		}
+		
+		.Codename {
+			text-align: center;
+		}
+		.Codebottom{
+			    margin: auto;
+		    display: table;
+		    margin-top: 20%;
+		    padding: 5px;
+		    background: #fff;
+		    border-radius: 5px;
+		        box-shadow: 3px 2px 7px #da6a10;
+		}
+		.Codebottomimg{
+			width: 180px;
+			height: 180px;
+		}
+		.Codebottomimg img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.Codebottom-text{
+			margin-top: 10px;
+			text-align: center;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		#tu{
+			width:100px;
+			height:30px;
+			text-align: center;
+			border: none;
+		    border-radius: 15px;
+		    background-color: #fdb415;
+		    font-size:14px;
+		    position: relative;
+		    left: 240px;
+		    top: 50px;
+		    color:#fff;
+		}
+		
+	</style>
+
+	<body class="promotionCode" id="capture" >
+		<div>
+			<div class="borderlink"></div>
+			
+			<div class="Code-box">
+				<div class="Codename">
+					<div class="Codeimg">
+						<img src="../img/verify03.png" id='headerPic'/>
+					</div>
+					<div class="Codetext" id='username'>
+						未设置昵称
+					</div>
+				</div>
+			</div>
+			
+			<div class="Codebottom">
+				<div class="Codebottomimg" >
+					<img src="" id='qrimg' />
+				</div>
+			</div>
+			
+			<div class="Codebottom-text">
+				扫码入驻超拼网
+			</div>
+			<button id="tu">
+				保存二维码
+			</button>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<!--<script type="text/javascript" src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>-->
+	<script type="text/javascript" src="../js/html2canvas.js"></script>
+	<script type="text/javascript" src="../js/html2canvas.min.js"></script>
+	<script type="text/javascript" src="../js/canvas2image.js"></script>
+	<script type="text/javascript" src="../js/base64.js"></script>
+	<script type="text/javascript" src="../script/promotionCode.js"></script>
+</html>

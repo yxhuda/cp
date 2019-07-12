@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>店铺优选</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<style>
+		.flex {
+			display: flex;
+			justify-content: space-between;
+		}
+		.listStyle {
+			touch-action: pan-y;
+		}
+		/*断网样式*/
+	.disconnect {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 600px;
+				
+			}
+			.disconnectimg {
+				width: 100px;
+				height: 100px;
+				margin: 0 auto;
+			}
+			.disconnectimg img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				margin: 0 auto;
+			}
+			.disconnecttitle {
+				text-align: center;
+				font-size: 14px;
+				margin-top: 20px
+			}
+			.disconnecttext {
+				text-align: center;
+				font-size: 14px;
+				margin-top:5px;
+				color:#999
+			}
+			.disconnecbutton {
+				width: 100%;
+			}
+			.disconnecbutton button {
+				padding: 5px 25px;
+				border: 1px solid #dedede;
+				border-radius:20px;
+				font-size: 12px;
+				margin:10px auto;
+    			display: table;
+			}
+
+	</style>
+	<body class="body">
+		<div style="display: none;" id="contents">
+			<div class="withbox" id="outlogin">
+				<img src="../img/with.png"/>
+				<p>
+					还没有登录哦
+				</p>
+				<p class="with-text">
+					登陆后才能收到商家、客服的消息！
+				</p>
+				<div class="withbox-button">
+					<button tapmode="" onclick="openWin('login');">
+						登录
+					</button>
+				</div>
+			</div>
+			<div style="display: none" id="login">
+				<div class="searchgoods" style="display: none;" id="isShop">
+					<div class="searchgoods-list searchgoods-list-on" id='user' onclick="clickChatTab('user')" tapmode=''>
+						用户聊天
+					</div>
+					<div class="searchgoods-list" id='shop' onclick="clickChatTab('shop')" tapmode=''>
+						店铺聊天
+					</div>
+				</div>
+				<div class="shopsearchgoods-body" id="chatbody">
+					<div class="body-table body-table-on" id='userPanel'>
+						<div style="display: none;" id="orderlist">
+							<div class="borderlink"></div>
+							<div class="addresslist-bottom mtopNo">
+								<div class="addresslistBottom-left">
+									<div class="zp-radios">
+										<label for="z2"></label>咨询近期交易订单
+									</div>
+								</div>
+							</div>
+							<div class="order" id="orderList"></div>
+						</div>
+						<div class="height"></div>
+						<div class="addresslist-list" id="userchatList" >
+							<div class="mui-table-view"></div>
+						</div>
+					</div>
+					<div class="body-table" id='shopPanel'>
+						<div class="height"></div>
+						<div class="addresslist-list" id="shopchatList"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../script/chatlist.js"></script>
+	</body>
+</html>

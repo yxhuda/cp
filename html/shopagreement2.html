@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>商家入驻</title>
+		<link rel="stylesheet" type="text/css" href="../css/hui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body>
+		<div class="content">
+			<div class="shopopen-personal">
+				<i class="icon iconfont icongerenzhongxinwoderenwubiaozhuntouxianxing"></i>
+				<span>个人入驻</span>
+			</div>
+			<div class="shopopen-merchant">
+				<i class="icon iconfont iconqiye"></i>
+				<span>商家入驻</span>
+			</div>
+		</div>
+		<div class="protocol">
+			<div class="protocolbox">
+				<div class="protocol-title">
+					入住协议
+				</div>
+				<div class="borderlink"></div>
+				<div class="protocol-conter">
+					<p>
+						入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须
+						知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻
+						须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入
+						驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知
+						入驻须知入驻须知入驻须知入驻
+					</p>
+					<p>
+						入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须
+						知入驻须须知入驻须知入驻须知入驻须知入
+						驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知
+						入驻须知入驻须知入驻须知入驻
+					</p>
+					<p>
+						入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须
+						知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻
+						须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入
+						知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻
+						须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入
+						驻须知入驻须知入驻须知入驻须知入驻须知入驻须知入驻须知
+						入驻须知入驻须知入驻须知入驻
+					</p>
+				</div>
+				<div class="protocol-i">
+					<div class="hui-form-radios">
+						<input type="checkbox" value="1" name="gender" checked="checked" id="c1"  />
+						<label for="c1"></label>
+						<span>我已详细阅读并接受入驻协议</span>
+					</div>
+				</div>
+				<div id="hui-dialog-btn-line">
+					<div class="protocolColor" style="width:100%;color: #008aff !important;">
+						同意
+					</div>
+				</div>
+				<script src="../js/hui.js" type="text/javascript" charset="utf-8"></script>
+				<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+				<script type="text/javascript" src="../script/api.js"></script>
+				<script type="text/javascript" src="../js/common.js"></script>
+				<!--<script>
+				function personalshop(){
+				openWinNew("personalshop");
+				}
+				</script>-->
+				<script>
+					$('.protocolColor').click(function() {
+						if ($('#c1').prop('checked')) {
+							var url = '';
+							url = 'merchantsshop.html';
+							location = url;
+						} else {
+							toast("请先阅读入驻协议")
+						}
+					})
+				</script>
+	</body>
+</html>
